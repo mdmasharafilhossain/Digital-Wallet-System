@@ -1,67 +1,166 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router'
-// import { useSelector, useDispatch } from 'react-redux'
-// import { RootState } from '../../store'
-// import { logout } from '../../store/slices/authSlice'
+import React, { useState } from 'react';
+import { Link, useNavigate } from 'react-router'; // Correct import from react-router-dom
+// import { useSelector, useDispatch } from 'react-redux';
+// import { RootState } from '../../store'; // Assuming this is your RootState path
+// import { logout } from '../../store/slices/authSlice'; // Assuming this is your slice path
+
+// SVG Icon components for clarity
+const MenuIcon = () => (
+  <svg
+    className="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg
+    className="w-6 h-6"
+    fill="none"
+    stroke="currentColor"
+    viewBox="0 0 24 24"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+  </svg>
+);
+
 
 const Navbar: React.FC = () => {
-//   const [isMenuOpen, setIsMenuOpen] = useState(false)
-//   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth)
-//   const dispatch = useDispatch()
-//   const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+//   const dispatch = useDispatch();
+//   const navigate = useNavigate();
 
   const handleLogout = () => {
-    // dispatch(logout())
-    // navigate('/')
-  }
-const isAuthenticated = false
+    // dispatch(logout());
+    // navigate('/');
+    // setIsMenuOpen(false); // Close menu on logout
+  };
+
+  const navLinks = [
+    { href: '/', label: 'Home' },
+    { href: '/about', label: 'About' },
+    { href: '/features', label: 'Features' },
+    { href: '/contact', label: 'Contact' },
+  ];
+ const isAuthenticated = false; // Placeholder, replace with actual auth state
+ const user = null; // Placeholder, replace with actual user data
   return (
-    <nav className="bg-primary-700 text-black shadow-lg">
+    <nav className="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-16">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0 text-xl font-bold">
+        <div className="flex items-center justify-between h-16">
+          {/* Logo / Brand Name */}
+          <div className="flex-shrink-0">
+            <Link to="/" className="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
               Digital Wallet
             </Link>
-            <div className="hidden md:ml-6 md:flex md:space-x-8">
-              <Link to="/" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">
-                Home
-              </Link>
-              <Link to="/about" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">
-                About
-              </Link>
-              <Link to="/features" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">
-                Features
-              </Link>
-              <Link to="/contact" className="px-3 py-2 rounded-md text-sm font-medium hover:bg-primary-600">
-                Contact
-              </Link>
-            </div>
           </div>
 
-          <div className="flex items-center">
+          {/* Desktop Navigation Links */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          {/* Desktop Auth Buttons */}
+          <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
-              <div className="flex items-center space-x-4">
-                {/* {user?.name} */}
-                <span className="text-sm">Hello, {"Mahi"}</span>
+              <>
+                <span className="text-gray-700 font-medium">Hello, {user?.name || 'User'}</span>
                 <button
                   onClick={handleLogout}
-                  className="bg-primary-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-500"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
                 >
                   Logout
                 </button>
-              </div>
+              </>
             ) : (
-              <div className="flex space-x-2">
+              <>
                 <Link
                   to="/login"
-                  className="bg-primary-600 px-4 py-2 rounded-md text-sm font-medium hover:bg-primary-500"
+                  className="text-gray-600 hover:text-indigo-600 px-4 py-2 rounded-md text-sm font-medium transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-white text-primary-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-100"
+                  className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                >
+                  Register
+                </Link>
+              </>
+            )}
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              aria-expanded="false"
+            >
+              <span className="sr-only">Open main menu</span>
+              {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Mobile Menu */}
+      <div
+        className={`md:hidden transform transition-transform duration-300 ease-in-out ${
+          isMenuOpen ? 'translate-x-0' : '-translate-x-full'
+        } absolute top-16 left-0 w-full bg-white shadow-lg`}
+      >
+        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+          {navLinks.map((link) => (
+            <Link
+              key={link.href}
+              to={link.href}
+              onClick={() => setIsMenuOpen(false)}
+              className="text-gray-600 hover:bg-gray-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+            >
+              {link.label}
+            </Link>
+          ))}
+
+          {/* Mobile Auth Buttons */}
+          <div className="pt-4 pb-3 border-t border-gray-200">
+            {isAuthenticated ? (
+              <div className="px-5 flex items-center justify-between">
+                <span className="font-medium text-gray-800">Hello, {user?.name || 'User'}</span>
+                <button
+                  onClick={handleLogout}
+                  className="bg-indigo-600 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                >
+                  Logout
+                </button>
+              </div>
+            ) : (
+              <div className="px-2 space-y-2">
+                 <Link
+                  to="/login"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-center bg-gray-100 text-gray-800 px-4 py-2 rounded-md text-base font-medium hover:bg-gray-200 transition-colors"
+                >
+                  Login
+                </Link>
+                <Link
+                  to="/register"
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block w-full text-center bg-indigo-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-indigo-700 transition-colors"
                 >
                   Register
                 </Link>
@@ -71,7 +170,7 @@ const isAuthenticated = false
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
