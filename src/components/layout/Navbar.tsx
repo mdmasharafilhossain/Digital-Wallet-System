@@ -1,23 +1,14 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router';
-import logo from '../../assets/logo.png' // Correct import from react-router-dom
-import logo2 from '../../assets/logo-removebg-preview.png' // Correct import from react-router-dom
+import { Link} from 'react-router';
+// Correct import from react-router-dom
+import logo2 from '../../assets/logo-removebg-preview.png' 
+import { FiAlignJustify } from "react-icons/fi";// Correct import from react-router-dom
 // import { useSelector, useDispatch } from 'react-redux';
 // import { RootState } from '../../store'; // Assuming this is your RootState path
 // import { logout } from '../../store/slices/authSlice'; // Assuming this is your slice path
 
 // SVG Icon components for clarity
-const MenuIcon = () => (
-  <svg
-    className="w-6 h-6"
-    fill="none"
-    stroke="currentColor"
-    viewBox="0 0 24 24"
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
-  </svg>
-);
+
 
 const CloseIcon = () => (
   <svg
@@ -112,7 +103,7 @@ const Navbar: React.FC = () => {
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
-              {isMenuOpen ? <CloseIcon /> : <MenuIcon />}
+              {isMenuOpen ? <CloseIcon /> : <FiAlignJustify className='text-2xl'/>}
             </button>
           </div>
         </div>
