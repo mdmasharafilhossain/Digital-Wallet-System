@@ -50,7 +50,7 @@ const Navbar: React.FC = () => {
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
   ];
- const isAuthenticated = false; // Placeholder, replace with actual auth state
+ const isAuthenticated = true; // Placeholder, replace with actual auth state
  const user = null; // Placeholder, replace with actual user data
   return (
     <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-[#E6D5B8] hover:text-indigo-600 px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
+                className="text-[#E6D5B8] hover:text-[#C8A978] px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
               >
                 {link.label}
               </Link>
@@ -78,10 +78,10 @@ const Navbar: React.FC = () => {
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <>
-                <span className="text-gray-700 font-medium">Hello, {user?.name || 'User'}</span>
+                <span className="text-[#E6D5B8] font-medium text-[18px]">Hello, {user?.name || 'User'}</span>
                 <button
                   onClick={handleLogout}
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                  className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-[18px] font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
                 >
                   Logout
                 </button>
@@ -90,13 +90,13 @@ const Navbar: React.FC = () => {
               <>
                 <Link
                   to="/login"
-                  className="text-gray-600 hover:text-indigo-600 px-4 py-2 rounded-md text-sm font-medium transition-colors"
+                  className="text-[#E6D5B8] hover:text-[#C8A978] px-4 py-2 rounded-md text-[18px] font-medium transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-indigo-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                  className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-sm font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
                 >
                   Register
                 </Link>
@@ -108,7 +108,7 @@ const Navbar: React.FC = () => {
           <div className="md:hidden flex items-center">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-600 hover:text-indigo-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#E6D5B8] bg-[#355676] hover:text-[#C8A978] hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-[#E6D5B8]"
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -122,7 +122,7 @@ const Navbar: React.FC = () => {
       <div
         className={`md:hidden transform transition-transform duration-300 ease-in-out ${
           isMenuOpen ? 'translate-x-0' : '-translate-x-full'
-        } absolute top-16 left-0 w-full bg-white shadow-lg`}
+        } absolute top-16 left-0 w-full bg-[#355676] shadow-lg`}
       >
         <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
           {navLinks.map((link) => (
@@ -130,7 +130,7 @@ const Navbar: React.FC = () => {
               key={link.href}
               to={link.href}
               onClick={() => setIsMenuOpen(false)}
-              className="text-gray-600 hover:bg-gray-100 hover:text-indigo-600 block px-3 py-2 rounded-md text-base font-medium transition-colors"
+              className="text-[#E6D5B8] hover:bg-[#1c3144] hover:text-[#C8A978] block px-3 py-2 rounded-md text-base font-medium transition-colors"
             >
               {link.label}
             </Link>
