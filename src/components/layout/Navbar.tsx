@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router'; // Correct import from react-router-dom
+import { Link, useNavigate } from 'react-router';
+import logo from '../../assets/logo.png' // Correct import from react-router-dom
+import logo2 from '../../assets/logo-removebg-preview.png' // Correct import from react-router-dom
 // import { useSelector, useDispatch } from 'react-redux';
 // import { RootState } from '../../store'; // Assuming this is your RootState path
 // import { logout } from '../../store/slices/authSlice'; // Assuming this is your slice path
@@ -51,14 +53,12 @@ const Navbar: React.FC = () => {
  const isAuthenticated = false; // Placeholder, replace with actual auth state
  const user = null; // Placeholder, replace with actual user data
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50 transition-all duration-300">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand Name */}
           <div className="flex-shrink-0">
-            <Link to="/" className="text-2xl font-bold text-indigo-600 hover:text-indigo-800 transition-colors">
-              Digital Wallet
-            </Link>
+            <img className='h-16 w-20' src={logo2}alt="" />
           </div>
 
           {/* Desktop Navigation Links */}
@@ -67,7 +67,7 @@ const Navbar: React.FC = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-gray-600 hover:text-indigo-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                className="text-[#E6D5B8] hover:text-indigo-600 px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
               >
                 {link.label}
               </Link>
