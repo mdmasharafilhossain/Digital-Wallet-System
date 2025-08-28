@@ -1,14 +1,14 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authSlice from './store.authSlice'
-import { api } from '../features/auth/auth.api';
+import { authApi } from '../features/auth/auth.api';
 
 export const store = configureStore({
   reducer: {
     auth: authSlice,
-    [api.reducerPath]: api.reducer,
+    [authApi.reducerPath]: authApi.reducer,
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat(api.middleware),
+    getDefaultMiddleware().concat(authApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;
