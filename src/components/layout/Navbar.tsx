@@ -41,7 +41,7 @@ const Navbar: React.FC = () => {
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
   ];
- const isAuthenticated = true; // Placeholder, replace with actual auth state
+ const isAuthenticated = false; // Placeholder, replace with actual auth state
  const user = null; // Placeholder, replace with actual user data
   return (
     <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
@@ -87,7 +87,7 @@ const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   to="/register"
-                  className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-sm font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
+                  className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md  font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
                 >
                   Register
                 </Link>
@@ -128,13 +128,13 @@ const Navbar: React.FC = () => {
           ))}
 
           {/* Mobile Auth Buttons */}
-          <div className="pt-4 pb-3 border-t border-gray-200">
+          <div className="pt-4 pb-3 border-t border-[#1c3144]">
             {isAuthenticated ? (
               <div className="px-5 flex items-center justify-between">
-                <span className="font-medium text-gray-800">Hello, {user?.name || 'User'}</span>
+                <span className="font-medium  text-[#E6D5B8]">Hello, {user?.name || 'User'}</span>
                 <button
                   onClick={handleLogout}
-                  className="bg-indigo-600 text-white px-3 py-1.5 rounded-md text-sm font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-all"
+                  className="bg-[#355676] text-[#E6D5B8] px-3 py-1.5 rounded-md text-sm font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
                 >
                   Logout
                 </button>
@@ -144,14 +144,14 @@ const Navbar: React.FC = () => {
                  <Link
                   to="/login"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-gray-100 text-gray-800 px-4 py-2 rounded-md text-base font-medium hover:bg-gray-200 transition-colors"
+                  className="block w-full text-center bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] px-4 py-2 rounded-md text-base font-medium hover:bg-[#1c3144] transition-colors"
                 >
                   Login
                 </Link>
                 <Link
                   to="/register"
                   onClick={() => setIsMenuOpen(false)}
-                  className="block w-full text-center bg-indigo-600 text-white px-4 py-2 rounded-md text-base font-medium hover:bg-indigo-700 transition-colors"
+                  className="block w-full text-center bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] px-4 py-2 rounded-md text-base font-medium hover:bg-[#1c3144]  transition-colors"
                 >
                   Register
                 </Link>
