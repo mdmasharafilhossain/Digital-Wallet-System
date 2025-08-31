@@ -60,7 +60,7 @@
 
 
 
-import Cookies from "js-cookie";
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setCredentials, logout } from "../redux/store/store.authSlice";
@@ -85,9 +85,10 @@ const { data: profile, isSuccess} = useGetProfileQuery(); // call always
 
 
 useEffect(() => {
+  
   if (isSuccess && profile) {
     
-    dispatch(setCredentials({ user: profile, token: null })); // token can be null
+    dispatch(setCredentials({ user: profile, token: "" })); // token can be null
   }
 }, [isSuccess, profile, dispatch]);
 
@@ -105,8 +106,8 @@ useEffect(() => {
   // };
  const login = async (credentials: LoginRequest) => {
   try {
-    const response = await loginApi(credentials).unwrap(); // { user, token }
-    dispatch(setCredentials(response));  // ✅ এখন user+token দুইটাই আসবে
+    const response = await loginApi(credentials).unwrap(); 
+    dispatch(setCredentials(response));  
     toast.success("Login successful!");
     return response;
   } catch (error: any) {
