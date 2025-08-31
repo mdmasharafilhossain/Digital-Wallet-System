@@ -2,8 +2,9 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { loginSchema, LoginFormData } from '../../schemas/auth';
+
 import { useAuth } from '../hooks/useAuth';
+import { loginSchema, type LoginFormData } from '../schemas/auth';
 
 
 const Login: React.FC = () => {
@@ -26,7 +27,7 @@ const Login: React.FC = () => {
       await login(data);
       navigate(from, { replace: true });
     } catch (error) {
-      // Error handling is done in the useAuth hook
+      console.error(error)
     }
   };
 
