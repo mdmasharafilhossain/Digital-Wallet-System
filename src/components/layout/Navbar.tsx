@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { Link} from 'react-router';
+import { Link, useNavigate} from 'react-router';
 // Correct import from react-router-dom
 import logo2 from '../../assets/logo-removebg-preview.png' 
 import { FiAlignJustify } from "react-icons/fi";// Correct import from react-router-dom
-// import { useSelector, useDispatch } from 'react-redux';
-// import { RootState } from '../../store'; // Assuming this is your RootState path
+import { useSelector, useDispatch } from 'react-redux';
+import type { RootState } from '../../redux/store/store';
+import { useAuth } from '../../hooks/useAuth';
+ // Assuming this is your RootState path
 // import { logout } from '../../store/slices/authSlice'; // Assuming this is your slice path
 
 // SVG Icon components for clarity
@@ -24,15 +26,18 @@ const CloseIcon = () => (
 
 
 const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-//   const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
-//   const dispatch = useDispatch();
-//   const navigate = useNavigate();
+   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { isAuthenticated, user } = useSelector((state: RootState) => state.auth);
+  const { logout } = useAuth();
+  const navigate = useNavigate();
 
-  const handleLogout = () => {
-    // dispatch(logout());
-    // navigate('/');
-    // setIsMenuOpen(false); // Close menu on logout
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      // Error handling is done in the useAuth hook
+    }
   };
 
   const navLinks = [
@@ -41,8 +46,7 @@ const Navbar: React.FC = () => {
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
   ];
- const isAuthenticated = false; // Placeholder, replace with actual auth state
- const user = null; // Placeholder, replace with actual user data
+  console.log(user,"user from nav");
   return (
     <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
