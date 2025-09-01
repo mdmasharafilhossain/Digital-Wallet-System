@@ -99,7 +99,7 @@ const handleLogout = async () => {
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <>
-                <span className="text-[#E6D5B8] font-medium text-[18px]">Hello, {user?.name || 'User'}</span>
+                <span className="text-[#E6D5B8] font-medium text-[18px]">Welcome, {user?.name?.split(" ")[1] || 'User'}</span>
                 <button
                   onClick={handleLogout}
                   className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-[18px] font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
