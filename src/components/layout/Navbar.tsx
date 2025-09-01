@@ -72,7 +72,7 @@ const handleLogout = async () => {
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
   ];
-  console.log(user,"user from nav");
+  
   return (
     <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -83,7 +83,7 @@ const handleLogout = async () => {
           </div>
 
           {/* Desktop Navigation Links */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
