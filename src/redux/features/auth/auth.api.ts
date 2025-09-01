@@ -28,7 +28,7 @@ export const authApi = createApi({
     body: credentials,
   }),
   transformResponse: (response: { status: string; data: { user: User; token: string } }) => {
-    return response.data; // ✅ সরাসরি { user, token } ফেরত দিবে
+    return response.data; 
   },
   invalidatesTags: ["User"],
 }),
@@ -43,7 +43,7 @@ export const authApi = createApi({
 
     getProfile: builder.query<User, void>({
   query: () => "/auth/profile",
-  transformResponse: (response: { status: string; data: User }) => response.data, // extract user
+  transformResponse: (response: { status: string; data: User }) => response.data, 
   providesTags: ["User"],
 }),
 

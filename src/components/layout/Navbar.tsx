@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { Link, useNavigate} from 'react-router';
-// Correct import from react-router-dom
+
 import logo2 from '../../assets/logo-removebg-preview.png' 
-import { FiAlignJustify } from "react-icons/fi";// Correct import from react-router-dom
-import { useSelector, useDispatch } from 'react-redux';
+import { FiAlignJustify } from "react-icons/fi";
+import { useSelector} from 'react-redux';
 import type { RootState } from '../../redux/store/store';
 import { useAuth } from '../../hooks/useAuth';
- // Assuming this is your RootState path
-// import { logout } from '../../store/slices/authSlice'; // Assuming this is your slice path
 
-// SVG Icon components for clarity
+import Swal from "sweetalert2";
+
 
 
 const CloseIcon = () => (
@@ -31,14 +30,41 @@ const Navbar: React.FC = () => {
   const { logout } = useAuth();
   const navigate = useNavigate();
 
-  const handleLogout = async () => {
-    try {
+  
+
+const handleLogout = async () => {
+  try {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You will be logged out of your account!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, logout!",
+    });
+
+    if (result.isConfirmed) {
       await logout();
-      navigate('/');
-    } catch (error) {
-      // Error handling is done in the useAuth hook
+      Swal.fire({
+        title: "Logged out!",
+        text: "You have been successfully logged out.",
+        icon: "success",
+        timer: 2000,
+        showConfirmButton: false,
+      });
+      navigate("/");
     }
-  };
+  } catch (error) {
+    Swal.fire({
+      title: "Error!",
+      text: `Something went wrong while logging out." || ${error}`,
+      icon: "error",
+      confirmButtonText: "OK",
+    });
+  }
+};
+
 
   const navLinks = [
     { href: '/', label: 'Home' },
