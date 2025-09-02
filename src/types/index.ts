@@ -1,3 +1,5 @@
+import type { ComponentType } from "react"
+
 export interface User {
   _id: string
   name: string
@@ -74,4 +76,12 @@ export interface TransactionFilters {
   status?: string
   startDate?: string
   endDate?: string
+}
+export interface ISidebarItem {
+  title: string;
+  items: {
+    title: string;
+    url: string;
+    component: ComponentType;
+  }[];
 }
