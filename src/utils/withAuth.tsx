@@ -3,6 +3,7 @@ import { Navigate } from "react-router";
 
 import { useGetProfileQuery } from "../redux/features/auth/auth.api";
 import type { User } from "../types";
+import LoadingScreen from "../shared/LoaingScreen";
 
 
 export const withAuth = (Component: ComponentType, requiredRole?: User["role"]) => {
@@ -10,7 +11,7 @@ export const withAuth = (Component: ComponentType, requiredRole?: User["role"]) 
     const { data: user, isLoading } = useGetProfileQuery();
 
     if (isLoading) {
-      return <div className="flex justify-center items-center h-screen text-[#E6D5B8]">Loading...</div>;
+      return <LoadingScreen/>
     }
 
     if (!user?.phone) {
