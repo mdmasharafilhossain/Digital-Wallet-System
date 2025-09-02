@@ -1,6 +1,6 @@
 
 import logo from "../assets/logo-removebg-preview.png";
-const LoadingScreen = () => {
+const LoadingScreen:React.FC = () => {
   return (
     <div className="flex justify-center items-center h-screen bg-[#1c3144]">
       <div className="relative flex items-center justify-center">
