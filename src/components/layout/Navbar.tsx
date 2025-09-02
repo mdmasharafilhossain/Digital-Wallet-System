@@ -71,8 +71,9 @@ const handleLogout = async () => {
     { href: '/about', label: 'About' },
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
+    { href: '/dashboard', label: 'Dashboard' },
   ];
-  
+  console.log(user,"user from nav");
   return (
     <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -99,7 +100,7 @@ const handleLogout = async () => {
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
               <>
-                <span className="text-[#E6D5B8] font-medium text-[18px]">Welcome, {user?.name?.split(" ")[1] || 'User'}</span>
+                <span className="text-[#E6D5B8] font-medium text-[18px]">Welcome, {user?.name ? user.name.split(" ")[0] : "User"}</span>
                 <button
                   onClick={handleLogout}
                   className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-[18px] font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
