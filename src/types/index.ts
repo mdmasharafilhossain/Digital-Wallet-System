@@ -78,7 +78,7 @@ export interface TransactionFilters {
   endDate?: string
 }
 export interface ISidebarItem {
- 
+ title?: string;
   items: {
     title: string;
     url: string;
