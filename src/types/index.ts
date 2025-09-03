@@ -86,3 +86,9 @@ export interface ISidebarItem {
     component: ComponentType;
   }[];
 }
+
+export interface ActionButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  icon: React.ReactNode;
+  label: string;
+}
