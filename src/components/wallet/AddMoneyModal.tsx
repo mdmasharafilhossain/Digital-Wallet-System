@@ -78,7 +78,7 @@ const AddMoneyModal: React.FC<AddMoneyModalProps> = ({ isOpen, onClose }) => {
             <label htmlFor="amount" className="mb-2 block text-sm font-medium text-gray-700">
               Amount
             </label>
-            {/* Input field with a currency symbol for better UX */}
+           
             <div className="relative">
               <span className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3 text-gray-500">
                 ৳
@@ -97,7 +97,7 @@ const AddMoneyModal: React.FC<AddMoneyModalProps> = ({ isOpen, onClose }) => {
             </div>
           </div>
 
-          {/* Action Buttons */}
+          
           <div className="mt-8 flex justify-end space-x-3">
             <button
               type="button"
@@ -111,7 +111,7 @@ const AddMoneyModal: React.FC<AddMoneyModalProps> = ({ isOpen, onClose }) => {
               disabled={isLoading}
               className="flex items-center justify-center rounded-lg bg-[#355676] px-5 py-2.5 text-sm font-semibold text-[#E6D5B8] shadow-md transition-all hover:bg-[#2a455d] disabled:cursor-not-allowed disabled:opacity-70"
             >
-              {/* Show a spinner and text when loading */}
+              
               {isLoading ? (
                 <>
                   <svg className="-ml-1 mr-3 h-5 w-5 animate-spin text-[#E6D5B8]" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
