@@ -7,6 +7,7 @@ import WalletCard from '../../components/wallet/WalletCard'
 import type { RootState } from '../../redux/store/store'
 import { useGetProfileQuery } from '../../redux/features/auth/auth.api'
 import AddMoneyModal from '../../components/wallet/AddMoneyModal'
+import WithdrawMoneyModal from '../../components/wallet/WithdrawMoneyModal'
 // import { useGetWalletQuery, useAddMoneyMutation, useWithdrawMoneyMutation, useSendMoneyMutation } from '../../services/walletApi'
 // import { useGetMyTransactionsQuery } from '../../services/transactionApi'
 // import WalletCard from '../../components/wallet/WalletCard'
@@ -56,14 +57,14 @@ console.log(data,"user from user dashboard");
         />
       )}
 
-      {/* {showWithdraw && (
+      {showWithdraw && (
         <WithdrawMoneyModal 
           isOpen={showWithdraw}
           onClose={() => setShowWithdraw(false)}
         />
       )}
 
-      {showSendMoney && (
+      {/* {showSendMoney && (
         <SendMoneyModal 
           isOpen={showSendMoney}
           onClose={() => setShowSendMoney(false)}
