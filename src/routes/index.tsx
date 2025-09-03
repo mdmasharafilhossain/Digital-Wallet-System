@@ -34,7 +34,7 @@ export const router = createBrowserRouter([
   },
 
    {
-    path: "/dashboard",
+    path: "/user",
     Component: withAuth(() => <DashboardLayout role={role.user} />, role.user),
     children: [
       // { index: true, element: <Navigate to="/dashboard/bookings" /> },

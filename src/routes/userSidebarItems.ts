@@ -9,8 +9,8 @@ export const userSidebarItems: ISidebarItem[] = [
     
     items: [
       {
-        title: "Bookings",
-        url: "/dashboard/bookings",
+        title: "Dashboard",
+        url: "/user/dashboard",
         component: Login
       },
     ],
