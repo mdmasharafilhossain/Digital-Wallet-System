@@ -30,13 +30,13 @@ const WalletCard: React.FC<WalletCardProps> = ({
       </div>
     )
   }
-
+console.log(wallet,"wallet from wallet card");
   return (
     <div className="bg-white shadow rounded-lg p-6">
-      <h2 className="text-lg font-medium text-gray-900">Your Wallet</h2>
+      <h2 className="text-lg font-medium text-gray-900">Your Wallet </h2>
       <div className="mt-4">
         <p className="text-4xl font-bold text-gray-900">
-          ৳{wallet?.balance.toFixed(2)}
+          ৳{wallet?.balance ?  wallet?.balance : 0}
         </p>
         <p className="text-sm text-gray-500 mt-2">
           {wallet?.isBlocked ? (

@@ -5,6 +5,7 @@ import { useGetWalletQuery } from '../../redux/features/auth/wallet.api'
 
 import WalletCard from '../../components/wallet/WalletCard'
 import type { RootState } from '../../redux/store/store'
+import { useGetProfileQuery } from '../../redux/features/auth/auth.api'
 // import { useGetWalletQuery, useAddMoneyMutation, useWithdrawMoneyMutation, useSendMoneyMutation } from '../../services/walletApi'
 // import { useGetMyTransactionsQuery } from '../../services/transactionApi'
 // import WalletCard from '../../components/wallet/WalletCard'
@@ -14,17 +15,20 @@ import type { RootState } from '../../redux/store/store'
 // import SendMoneyModal from '../../components/wallet/SendMoneyModal'
 
 const UserDashboard: React.FC = () => {
-  const { user } = useSelector((state: RootState) => state.auth)
+//   const { user } = useSelector((state: RootState) => state.auth)
+  const {  data  } = useGetProfileQuery();
   const { data: wallet, isLoading: walletLoading } = useGetWalletQuery()
 //   const { data: transactions, isLoading: transactionsLoading } = useGetMyTransactionsQuery({ page: 1, limit: 10 })
   const [showAddMoney, setShowAddMoney] = useState(false)
   const [showWithdraw, setShowWithdraw] = useState(false)
   const [showSendMoney, setShowSendMoney] = useState(false)
-
+console.log(data,"user from user dashboard");
+    console.log(wallet,"wallet from user dashboard");
+   
   return (
     <div className="space-y-6">
       <div className="bg-white shadow rounded-lg p-6">
-        <h1 className="text-2xl font-bold text-gray-900">Welcome back, {user?.name}!</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Welcome back, {data?.name ? data?.name : 'User'}!</h1>
         <p className="text-gray-600">Manage your wallet and transactions</p>
       </div>
 

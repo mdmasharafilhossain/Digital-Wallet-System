@@ -8,9 +8,13 @@ export const walletApi = createApi({
   tagTypes: ['Wallet'],
   endpoints: (builder) => ({
     getWallet: builder.query<Wallet, void>({
-      query: () => '/wallet/me',
-      providesTags: ['Wallet'],
-    }),
+  query: () => '/wallet/me',
+  transformResponse: (response: { status: string; data: { wallet: Wallet } }) => {
+    return response.data.wallet; 
+  },
+  providesTags: ['Wallet'],
+}),
+
     addMoney: builder.mutation<Wallet, AddMoneyRequest>({
       query: (body) => ({
         url: '/wallet/add-money',

@@ -1,4 +1,5 @@
-import Login from "../pages/login";
+
+import UserDashboard from "../pages/User/UserDashboard";
 import type { ISidebarItem } from "../types";
 
 
@@ -11,7 +12,7 @@ export const userSidebarItems: ISidebarItem[] = [
       {
         title: "Dashboard",
         url: "/user/dashboard",
-        component: Login
+        component: UserDashboard
       },
     ],
   },
