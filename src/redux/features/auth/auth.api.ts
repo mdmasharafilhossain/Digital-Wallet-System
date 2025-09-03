@@ -1,19 +1,9 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
+import { createApi} from "@reduxjs/toolkit/query/react";
+import  baseQuery  from "./baseApi";
 import type { User, LoginRequest, RegisterRequest } from "../../../types/index";
-import type { RootState } from "../../store/store";
+
 // process.env.REACT_APP_API_URL ||
-const baseQuery = fetchBaseQuery({
-  baseUrl: "http://localhost:5000/api/v1",
-  prepareHeaders: (headers, { getState }) => {
-    const token = (getState() as RootState).auth.token;
-    if (token) {
-      headers.set("authorization", `Bearer ${token}`);
-    }
-    return headers;
-  },
-  credentials: "include",
-});
+
 
 export const authApi = createApi({
   reducerPath: "authApi",
