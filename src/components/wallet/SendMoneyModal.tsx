@@ -82,7 +82,7 @@ const SendMoneyModal: React.FC<SendMoneyModalProps> = ({ isOpen, onClose }) => {
           </button>
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-6">
+         <form onSubmit={handleSubmit} className="mt-6">
           <div className="mb-5">
             <label htmlFor="receiverPhone" className="mb-2 block text-sm font-medium text-gray-700">
               Receiver's ID
