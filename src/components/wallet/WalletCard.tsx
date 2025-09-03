@@ -30,7 +30,7 @@ const WalletCard: React.FC<WalletCardProps> = ({
       </div>
     )
   }
-console.log(wallet?.user?.role,"wallet from wallet card");
+
   return (
     <div className="bg-white shadow rounded-lg p-6">
       <h2 className="text-lg font-medium text-gray-900">Your Wallet </h2>

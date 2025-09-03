@@ -1,20 +1,15 @@
 import React, { useState } from 'react'
-import { useSelector } from 'react-redux'
+
 
 import { useGetWalletQuery } from '../../redux/features/auth/wallet.api'
 
 import WalletCard from '../../components/wallet/WalletCard'
-import type { RootState } from '../../redux/store/store'
+
 import { useGetProfileQuery } from '../../redux/features/auth/auth.api'
 import AddMoneyModal from '../../components/wallet/AddMoneyModal'
 import WithdrawMoneyModal from '../../components/wallet/WithdrawMoneyModal'
-// import { useGetWalletQuery, useAddMoneyMutation, useWithdrawMoneyMutation, useSendMoneyMutation } from '../../services/walletApi'
-// import { useGetMyTransactionsQuery } from '../../services/transactionApi'
-// import WalletCard from '../../components/wallet/WalletCard'
-// import TransactionList from '../../components/transactions/TransactionList'
-// import AddMoneyModal from '../../components/wallet/AddMoneyModal'
-// import WithdrawMoneyModal from '../../components/wallet/WithdrawMoneyModal'
-// import SendMoneyModal from '../../components/wallet/SendMoneyModal'
+import SendMoneyModal from '../../components/wallet/SendMoneyModal'
+
 
 const UserDashboard: React.FC = () => {
 //   const { user } = useSelector((state: RootState) => state.auth)
@@ -37,7 +32,7 @@ console.log(data,"user from user dashboard");
       <WalletCard 
         wallet={wallet} 
         isLoading={walletLoading}
-        onAddMoney={() => setShowAddMoney(false)}
+        onAddMoney={() => setShowAddMoney(true)}
         onWithdraw={() => setShowWithdraw(true)}
         onSendMoney={() => setShowSendMoney(true)}
       />
@@ -64,12 +59,12 @@ console.log(data,"user from user dashboard");
         />
       )}
 
-      {/* {showSendMoney && (
+      {showSendMoney && (
         <SendMoneyModal 
           isOpen={showSendMoney}
           onClose={() => setShowSendMoney(false)}
         />
-      )} */}
+      )}
     </div>
   )
 }
