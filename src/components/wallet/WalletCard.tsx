@@ -30,7 +30,7 @@ const WalletCard: React.FC<WalletCardProps> = ({
       </div>
     )
   }
-console.log(wallet,"wallet from wallet card");
+console.log(wallet?.user?.role,"wallet from wallet card");
   return (
     <div className="bg-white shadow rounded-lg p-6">
       <h2 className="text-lg font-medium text-gray-900">Your Wallet </h2>
@@ -47,13 +47,17 @@ console.log(wallet,"wallet from wallet card");
         </p>
       </div>
       <div className="mt-6 flex space-x-4">
-        <button
+        {
+
+           ( wallet?.user?.role === 'agent' || wallet?.user?.role === 'admin') &&
+            <button
           onClick={onAddMoney}
           disabled={wallet?.isBlocked}
-          className="flex-1 bg-primary-600 text-white py-2 px-4 rounded-md hover:bg-primary-700 disabled:opacity-50"
+          className="flex-1 bg-primary-600 text-black py-2 px-4 rounded-md hover:bg-primary-700 disabled:opacity-50"
         >
           Add Money
         </button>
+        }
         <button
           onClick={onWithdraw}
           disabled={wallet?.isBlocked}

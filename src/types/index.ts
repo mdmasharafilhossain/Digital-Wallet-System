@@ -12,9 +12,10 @@ export interface User {
 
 export interface Wallet {
   _id: string
-  user: string | User
+  user:  User
   balance: number
   isBlocked: boolean
+  role : 'user' | 'agent' | 'admin'
 }
 
 export interface Transaction {
