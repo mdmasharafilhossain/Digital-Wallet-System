@@ -102,7 +102,7 @@ const SendMoneyModal: React.FC<SendMoneyModalProps> = ({ isOpen, onClose }) => {
                 value={receiverPhone}
                 onChange={(e) => setReceiverPhone(e.target.value)}
                 className="w-full rounded-lg border-gray-300 bg-white py-3 pl-10 pr-4 text-gray-800 shadow-sm transition focus:border-[#355676] focus:outline-none focus:ring-2 focus:ring-[#355676]"
-                placeholder="Enter phone number"
+                placeholder="Enter Receiver's ID"
                 required
               />
             </div>
