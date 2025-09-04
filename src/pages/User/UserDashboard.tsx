@@ -15,8 +15,23 @@ import { useGetMyTransactionsQuery } from "../../redux/features/auth/transaction
 const UserDashboard: React.FC = () => {
   const { user } = useSelector((state: RootState) => state.auth);
   const { data: wallet, isLoading: walletLoading } = useGetWalletQuery();
-  const { data: transactions, isLoading: transactionsLoading } =
-    useGetMyTransactionsQuery({ page: 1, limit: 10 });
+   
+  const [page, setPage] = useState(1);
+  const [typeFilter, setTypeFilter] = useState("");
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  const limit = 5;
+
+  const { data, isLoading } = useGetMyTransactionsQuery({
+    page,
+    limit,
+    type: typeFilter || undefined,
+    startDate: startDate || undefined,
+    endDate: endDate || undefined,
+  });
+
+  const transactions = data?.transactions || [];
+  const totalPages = data?.totalPages || 0;
 
   const [showAddMoney, setShowAddMoney] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
@@ -66,17 +81,63 @@ const UserDashboard: React.FC = () => {
           <h2 className="text-2xl font-semibold text-[#E6D5B8] drop-shadow">
             Recent Transactions
           </h2>
-          <motion.span
-            whileHover={{ scale: 1.1 }}
-            className="text-sm md:text-base text-[#C8A978] cursor-pointer hover:underline"
-          >
-            View All
-          </motion.span>
-        </div>
-        <TransactionList
-          transactions={transactions || []}
-          isLoading={transactionsLoading}
+             {/* Filters */}
+      <div className="flex flex-col md:flex-row gap-3 items-center mb-4">
+        <select
+          className="p-2 rounded bg-[#2C3E50] text-[#E6D5B8]"
+          value={typeFilter}
+          onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
+        >
+          <option value="">All Types</option>
+          <option value="top-up">Top-up</option>
+          <option value="withdraw">Withdraw</option>
+          <option value="send">Send</option>
+        </select>
+
+        <input
+          type="date"
+          className="p-2 rounded bg-[#2C3E50] text-[#E6D5B8]"
+          value={startDate}
+          onChange={(e) => { setStartDate(e.target.value); setPage(1); }}
         />
+        <input
+          type="date"
+          className="p-2 rounded bg-[#2C3E50] text-[#E6D5B8]"
+          value={endDate}
+          onChange={(e) => { setEndDate(e.target.value); setPage(1); }}
+        />
+      </div>
+
+        </div>
+          <div className="p-4">
+      <h1 className="text-xl font-bold mb-4 text-[#E6D5B8]">My Transactions</h1>
+
+      {/* Transaction Table/List */}
+      <TransactionList transactions={transactions} isLoading={isLoading} />
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="flex justify-center mt-6 space-x-2">
+          <button
+            className="px-3 py-1 rounded bg-[#355676] text-[#E6D5B8] disabled:opacity-50"
+            onClick={() => setPage((prev) => prev - 1)}
+            disabled={page === 1}
+          >
+            Prev
+          </button>
+          <span className="px-3 py-1 text-[#E6D5B8]">
+            Page {page} of {totalPages}
+          </span>
+          <button
+            className="px-3 py-1 rounded bg-[#355676] text-[#E6D5B8] disabled:opacity-50"
+            onClick={() => setPage((prev) => prev + 1)}
+            disabled={page === totalPages}
+          >
+            Next
+          </button>
+        </div>
+      )}
+    </div>
       </motion.div>
 
       {/* Modals */}
