@@ -6,12 +6,16 @@ export const transactionApi = createApi({
   reducerPath: 'transactionApi',
   baseQuery,
   endpoints: (builder) => ({
-    getMyTransactions: builder.query<Transaction[], { page?: number; limit?: number }>({
-      query: (params) => ({
-        url: '/transactions/me',
-        params,
-      }),
-    }),
+   getMyTransactions: builder.query<Transaction[], { page?: number; limit?: number }>({
+  query: (params) => ({
+    url: '/transactions/me',
+    params,
+  }),
+  transformResponse: (response: { status: string; results: number; data: { transactions: Transaction[] } }) => {
+    return response.data.transactions;
+  },
+}),
+
     getAllTransactions: builder.query<{ transactions: Transaction[]; total: number }, { 
       page?: number; 
       limit?: number;

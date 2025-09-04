@@ -1,13 +1,13 @@
-import React from 'react'
-import type { Wallet } from '../../types'
-
+import React from "react";
+import type { Wallet } from "../../types";
+import { motion } from "framer-motion";
 
 interface WalletCardProps {
-  wallet: Wallet | undefined
-  isLoading: boolean
-  onAddMoney: () => void
-  onWithdraw: () => void
-  onSendMoney: () => void
+  wallet: Wallet | undefined;
+  isLoading: boolean;
+  onAddMoney: () => void;
+  onWithdraw: () => void;
+  onSendMoney: () => void;
 }
 
 const WalletCard: React.FC<WalletCardProps> = ({
@@ -15,66 +15,71 @@ const WalletCard: React.FC<WalletCardProps> = ({
   isLoading,
   onAddMoney,
   onWithdraw,
-  onSendMoney
+  onSendMoney,
 }) => {
   if (isLoading) {
     return (
-      <div className="bg-white shadow rounded-lg p-6 animate-pulse">
-        <div className="h-8 bg-gray-200 rounded w-1/3 mb-4"></div>
-        <div className="h-12 bg-gray-200 rounded w-1/2 mb-6"></div>
+      <div className="bg-[#355676] shadow-lg rounded-2xl p-6 animate-pulse text-[#E6D5B8]">
+        <div className="h-6 bg-[#2b455a] rounded w-1/3 mb-4"></div>
+        <div className="h-10 bg-[#2b455a] rounded w-1/2 mb-6"></div>
         <div className="flex space-x-4">
-          <div className="h-10 bg-gray-200 rounded w-1/3"></div>
-          <div className="h-10 bg-gray-200 rounded w-1/3"></div>
-          <div className="h-10 bg-gray-200 rounded w-1/3"></div>
+          <div className="h-10 bg-[#2b455a] rounded w-1/3"></div>
+          <div className="h-10 bg-[#2b455a] rounded w-1/3"></div>
+          <div className="h-10 bg-[#2b455a] rounded w-1/3"></div>
         </div>
       </div>
-    )
+    );
   }
 
   return (
-    <div className="bg-white shadow rounded-lg p-6">
-      <h2 className="text-lg font-medium text-gray-900">Your Wallet </h2>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="bg-[#355676] shadow-xl rounded-2xl p-6 text-[#E6D5B8]"
+    >
+      <h2 className="text-xl font-semibold">💳 Your Wallet</h2>
       <div className="mt-4">
-        <p className="text-4xl font-bold text-gray-900">
-          ৳{wallet?.balance ?  wallet?.balance : 0}
+        <p className="text-4xl font-extrabold">
+          ৳{wallet?.balance ? wallet?.balance.toLocaleString() : 0}
         </p>
-        <p className="text-sm text-gray-500 mt-2">
+        <p className="text-sm mt-2">
           {wallet?.isBlocked ? (
-            <span className="text-red-600">Wallet is blocked</span>
+            <span className="text-red-400 font-medium">🔒 Wallet is blocked</span>
           ) : (
-            <span className="text-green-600">Wallet is active</span>
+            <span className="text-green-400 font-medium">✅ Wallet is active</span>
           )}
         </p>
       </div>
-      <div className="mt-6 flex space-x-4">
-        {
 
-           ( wallet?.user?.role === 'agent' || wallet?.user?.role === 'admin') &&
-            <button
-          onClick={onAddMoney}
-          disabled={wallet?.isBlocked}
-          className="flex-1 bg-primary-600 text-black py-2 px-4 rounded-md hover:bg-primary-700 disabled:opacity-50"
-        >
-          Add Money
-        </button>
-        }
+      {/* Buttons */}
+      <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-3">
+        {(wallet?.user?.role === "agent" || wallet?.user?.role === "admin") && (
+          <button
+            onClick={onAddMoney}
+            disabled={wallet?.isBlocked}
+            className="w-full bg-gradient-to-r from-[#E6D5B8] to-[#C8A978] text-[#1c3144] font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
+          >
+            ➕ Add Money
+          </button>
+        )}
         <button
           onClick={onWithdraw}
           disabled={wallet?.isBlocked}
-          className="flex-1 bg-green-600 text-white py-2 px-4 rounded-md hover:bg-green-700 disabled:opacity-50"
+          className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
         >
-          Withdraw
+          💵 Withdraw
         </button>
         <button
           onClick={onSendMoney}
           disabled={wallet?.isBlocked}
-          className="flex-1 bg-purple-600 text-white py-2 px-4 rounded-md hover:bg-purple-700 disabled:opacity-50"
+          className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
         >
-          Send Money
+          📤 Send Money
         </button>
       </div>
-    </div>
-  )
-}
+    </motion.div>
+  );
+};
 
-export default WalletCard
+export default WalletCard;
