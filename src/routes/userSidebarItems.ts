@@ -17,7 +17,7 @@ export const userSidebarItems: ISidebarItem[] = [
       },
       {
         title: "Manage Profile",
-        url: "/user/profile",
+        url: "profile",
         component: UserProfile
       },
     ],

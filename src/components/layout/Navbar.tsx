@@ -71,7 +71,8 @@ const handleLogout = async () => {
     { href: '/about', label: 'About' },
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
-    { href: '/user', label: 'Dashboard' },
+    // { href: '/user', label: 'Dashboard' },
+    // { href: '/admin', label: 'Dashboard' },
   ];
   console.log(user,"user from nav");
   return (
@@ -94,8 +95,22 @@ const handleLogout = async () => {
                 {link.label}
               </Link>
             ))}
+            {isAuthenticated && user?.role && (
+    <Link
+      to={
+        user.role === 'admin'
+          ? '/admin'
+          : user.role === 'agent'
+          ? '/agent'
+          : '/user'
+      }
+      className="text-[#E6D5B8] hover:text-[#C8A978] px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
+    >
+      Dashboard
+    </Link>
+  )}
           </div>
-
+ 
           {/* Desktop Auth Buttons */}
           <div className="hidden md:flex items-center space-x-4">
             {isAuthenticated ? (
@@ -156,8 +171,24 @@ const handleLogout = async () => {
             >
               {link.label}
             </Link>
-          ))}
 
+            
+          ))}
+{isAuthenticated && user?.role && (
+    <Link
+      to={
+        user.role === 'admin'
+          ? '/admin'
+          : user.role === 'agent'
+          ? '/agent'
+          : '/user'
+      }
+      onClick={() => setIsMenuOpen(false)}
+      className="text-[#E6D5B8] hover:bg-[#1c3144] hover:text-[#C8A978] block px-3 py-2 rounded-md text-base font-medium transition-colors"
+    >
+      Dashboard
+    </Link>
+  )}
           {/* Mobile Auth Buttons */}
           <div className="pt-4 pb-3 border-t border-[#1c3144]">
             {isAuthenticated ? (
