@@ -29,7 +29,7 @@ export const walletApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Wallet'],
+       invalidatesTags: ['Wallet'],
     }),
     sendMoney: builder.mutation<void, SendMoneyRequest>({
       query: (body) => ({
