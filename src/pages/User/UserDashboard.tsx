@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { PlusIcon, ArrowDownTrayIcon, PaperAirplaneIcon } from '@heroicons/react/24/solid';
+import {  ArrowDownTrayIcon, PaperAirplaneIcon } from '@heroicons/react/24/solid';
 
 
 import { useGetWalletQuery } from '../../redux/features/auth/wallet.api';
@@ -72,7 +72,7 @@ const UserDashboard: React.FC = () => {
 
             {/* Actions */}
             <div className="flex items-center gap-3">
-              <ActionButton icon={<PlusIcon className="w-5 h-5" />} onClick={() => setShowAddMoney(true)} label="Add" />
+              
               <ActionButton icon={<ArrowDownTrayIcon className="w-5 h-5" />} onClick={() => setShowWithdraw(true)} label="Withdraw" />
               <ActionButton icon={<PaperAirplaneIcon className="w-5 h-5" />} onClick={() => setShowSendMoney(true)} label="Send" />
             </div>
