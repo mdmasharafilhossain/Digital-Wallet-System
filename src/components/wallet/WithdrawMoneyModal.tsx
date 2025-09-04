@@ -2,11 +2,9 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2'; 
 import { useWithdrawMoneyMutation } from '../../redux/features/auth/wallet.api';
+import type { WithdrawMoneyModalProps } from '../../types/wallet';
 
-interface WithdrawMoneyModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+
 
 const WithdrawMoneyModal: React.FC<WithdrawMoneyModalProps> = ({ isOpen, onClose }) => {
   const [amount, setAmount] = useState('');

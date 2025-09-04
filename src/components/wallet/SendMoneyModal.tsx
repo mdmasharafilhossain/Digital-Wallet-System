@@ -2,11 +2,9 @@
 import React, { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useSendMoneyMutation } from '../../redux/features/auth/wallet.api';
+import type { SendMoneyModalProps } from '../../types/wallet';
 
-interface SendMoneyModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
+
 
 const SendMoneyModal: React.FC<SendMoneyModalProps> = ({ isOpen, onClose }) => {
   const [receiverPhone, setReceiverPhone] = useState('');

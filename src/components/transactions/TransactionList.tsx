@@ -1,10 +1,7 @@
 import React from "react";
-import type { Transaction } from "../../types";
+import type { TransactionListProps } from "../../types/transaction";
 
-interface TransactionListProps {
-  transactions: Transaction[];
-  isLoading: boolean;
-}
+
 
 const TransactionList: React.FC<TransactionListProps> = ({
   transactions,
