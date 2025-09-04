@@ -14,7 +14,7 @@ import { useGetMyTransactionsQuery } from "../../redux/features/auth/transaction
 import { useGetProfileQuery } from "../../redux/features/auth/auth.api";
 
 const UserDashboard: React.FC = () => {
-  // const { user } = useSelector((state: RootState) => state.auth);
+  
   const {  data:user } = useGetProfileQuery();
   const { data: wallet, isLoading: walletLoading } = useGetWalletQuery();
    

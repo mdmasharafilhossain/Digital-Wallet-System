@@ -37,6 +37,14 @@ export const authApi = createApi({
   providesTags: ["User"],
 }),
 
+updateProfile: builder.mutation<User, Partial<User>>({
+      query: (body) => ({
+        url: "/auth/profile",
+        method: "PATCH",
+        body,
+      }),
+    }),
+
     logout: builder.mutation<void, void>({
       query: () => ({
         url: "/auth/logout",
@@ -44,12 +52,18 @@ export const authApi = createApi({
       }),
       invalidatesTags: ["User"],
     }),
+
+
+
   }),
 });
+
+
 
 export const {
   useLoginMutation,
   useRegisterMutation,
   useGetProfileQuery,
   useLogoutMutation,
+  useUpdateProfileMutation 
 } = authApi;
