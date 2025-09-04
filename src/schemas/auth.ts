@@ -29,7 +29,23 @@ export const registerSchema = z
     message: "Passwords don't match",
     path: ["confirmPassword"],
   });
-
+export const updateSchema = z.object({
+  name: z.string().min(1, "Name is required").max(50, "Max 50 chars").optional(),
+  phone: z
+    .string()
+    .regex(/^01[3-9]\d{8}$/, "Invalid Bangladeshi phone number")
+    .optional(),
+  password: z
+    .string()
+    .min(6, "Password must be at least 6 characters")
+    .max(100, "Password too long")
+    .regex(
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).+$/,
+      "Password must include uppercase, lowercase, number, and special character"
+    )
+    .optional(),
+  confirmPassword: z.string().optional(),
+})
 
 
 

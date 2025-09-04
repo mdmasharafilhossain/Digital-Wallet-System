@@ -6,6 +6,7 @@ import type { Transaction } from "../../../types";
 export const transactionApi = createApi({
   reducerPath: "transactionApi",
   baseQuery,
+  tagTypes: ["Transaction"],
   endpoints: (builder) => ({
 
 
@@ -33,6 +34,7 @@ export const transactionApi = createApi({
     total: response.total,
     totalPages: response.totalPages,
   }),
+  providesTags: ['Transaction'],
 }),
 
 

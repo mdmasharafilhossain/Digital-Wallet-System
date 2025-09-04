@@ -8,6 +8,7 @@ export interface User {
   isAgentApproved?: boolean
   isActive?: boolean
   createdAt: string
+  password: string
 }
 
 export interface Wallet {
