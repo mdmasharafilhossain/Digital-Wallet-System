@@ -15,7 +15,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ role }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   // ✅ fetch profile from RTK Query
-  const { data: user, isLoading } = useGetProfileQuery();
+  const {  isLoading } = useGetProfileQuery();
 
   if (isLoading) {
     return (
@@ -48,9 +48,9 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ role }) => {
         <nav className="space-y-6">
           {sidebarItems.map((section, idx) => (
             <div key={idx}>
-              <h3 className="text-sm uppercase tracking-wide text-[#C8A978] font-semibold mb-2">
+              {/* <h3 className="text-sm uppercase tracking-wide text-[#C8A978] font-semibold mb-2">
                 {section.title}
-              </h3>
+              </h3> */}
               <div className="space-y-1">
                 {section.items.map((item, i) => (
                   <NavLink

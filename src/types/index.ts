@@ -8,13 +8,15 @@ export interface User {
   isAgentApproved?: boolean
   isActive?: boolean
   createdAt: string
+  password: string
 }
 
 export interface Wallet {
   _id: string
-  user: string | User
+  user:  User
   balance: number
   isBlocked: boolean
+  role : 'user' | 'agent' | 'admin'
 }
 
 export interface Transaction {
@@ -78,10 +80,16 @@ export interface TransactionFilters {
   endDate?: string
 }
 export interface ISidebarItem {
- 
+ title?: string;
   items: {
     title: string;
     url: string;
     component: ComponentType;
   }[];
+}
+
+export interface ActionButtonProps {
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  icon: React.ReactNode;
+  label: string;
 }
