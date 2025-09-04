@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+
 import { motion } from "framer-motion";
 
 import WalletCard from "../../components/wallet/WalletCard";
@@ -8,12 +8,14 @@ import AddMoneyModal from "../../components/wallet/AddMoneyModal";
 import WithdrawMoneyModal from "../../components/wallet/WithdrawMoneyModal";
 import SendMoneyModal from "../../components/wallet/SendMoneyModal";
 
-import type { RootState } from "../../redux/store/store";
+
 import { useGetWalletQuery } from "../../redux/features/auth/wallet.api";
 import { useGetMyTransactionsQuery } from "../../redux/features/auth/transaction.Api";
+import { useGetProfileQuery } from "../../redux/features/auth/auth.api";
 
 const UserDashboard: React.FC = () => {
-  const { user } = useSelector((state: RootState) => state.auth);
+  // const { user } = useSelector((state: RootState) => state.auth);
+  const {  data:user } = useGetProfileQuery();
   const { data: wallet, isLoading: walletLoading } = useGetWalletQuery();
    
   const [page, setPage] = useState(1);
@@ -32,6 +34,7 @@ const UserDashboard: React.FC = () => {
 
   const transactions = data?.transactions || [];
   const totalPages = data?.totalPages || 0;
+  console.log(transactions,"transactions");
 
   const [showAddMoney, setShowAddMoney] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);
