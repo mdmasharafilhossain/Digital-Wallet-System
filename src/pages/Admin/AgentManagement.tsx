@@ -152,12 +152,12 @@ const AgentManagement: React.FC = () => {
               </h3>
               <span
                 className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                  user.isActive
+                  user.isAgentApproved
                     ? "bg-green-100 text-green-800"
                     : "bg-red-100 text-red-800"
                 }`}
               >
-                {user.isActive ? "Active" : "Inactive"}
+                 {user.isAgentApproved ? "Approved" : "Suspended / Pending"}
               </span>
             </div>
             <p className="text-[#355676] font-medium">Phone: {user.phone}</p>
@@ -168,7 +168,7 @@ const AgentManagement: React.FC = () => {
               onClick={() => handleToggleBlock(user._id, user.isActive)}
               className="w-full px-3 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] font-semibold"
             >
-              {user.isActive ? "Block User" : "Unblock User"}
+              {user.isAgentApproved ?   "Suspend Agent" : "Approve Agent"}
             </button>
           </div>
         ))}
