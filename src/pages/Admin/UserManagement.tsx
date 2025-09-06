@@ -4,6 +4,10 @@ import {
   useGetAllUsersQuery,
   useToggleUserBlockMutation,
 } from "../../redux/features/auth/admin.api";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const UserManagement: React.FC = () => {
   const [page, setPage] = useState(1);
@@ -11,64 +15,94 @@ const UserManagement: React.FC = () => {
 
   const { data, isLoading, refetch } = useGetAllUsersQuery({ page, limit });
   const [toggleUserBlock] = useToggleUserBlockMutation();
-console.log(data,"data");
 
- const users = data?.users || [];
- console.log(users,"users");
-const totalPages = Math.ceil((data?.total || 0) / limit);
+  const users = data?.users || [];
+  const totalPages = Math.ceil((data?.total || 0) / limit);
 
-  const handleToggleBlock = async (id: string) => {
-    try {
-      await toggleUserBlock({ id }).unwrap();
-      refetch(); // refresh data after block/unblock
-    } catch (err) {
-      console.error("Failed to toggle user block:", err);
+  const handleToggleBlock = async (id: string, isActive: boolean) => {
+    const action = isActive ? "Block" : "Unblock";
+
+    const result = await MySwal.fire({
+      title: `Are you sure you want to ${action} this user?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes",
+      cancelButtonText: "No",
+      background: "#355676",
+      color: "#E6D5B8",
+      confirmButtonColor: "#C8A978",
+      cancelButtonColor: "#E6D5B8",
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await toggleUserBlock({ id }).unwrap();
+        refetch();
+        MySwal.fire({
+          icon: "success",
+          title: `User ${action}d successfully!`,
+          background: "#355676",
+          color: "#E6D5B8",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      } catch (err) {
+        console.error("Failed to toggle user block:", err);
+        MySwal.fire({
+          icon: "error",
+          title: "Failed to update user!",
+          background: "#355676",
+          color: "#E6D5B8",
+        });
+      }
     }
   };
 
   if (isLoading) {
     return (
-      <div className="animate-pulse">
-        <div className="h-8 bg-gray-200 rounded w-1/4 mb-4"></div>
+      <div className="animate-pulse p-4">
+        <div className="h-8 bg-[#355676] rounded w-1/4 mb-4"></div>
         {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-16 bg-gray-200 rounded mb-2"></div>
+          <div key={i} className="h-16 bg-[#355676] rounded mb-2"></div>
         ))}
       </div>
     );
   }
 
   return (
-    <div>
-      <h2 className="text-lg font-medium text-gray-900 mb-4">User Management</h2>
-      <div className="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
+    <div className="p-4 md:p-6 bg-[#f5f5f5] min-h-screen">
+      <h2 className="text-2xl font-bold mb-6 text-[#355676]">
+        User Management
+      </h2>
+
+      {/* Desktop Table */}
+      <div className="hidden md:block overflow-hidden shadow-lg ring-1 ring-black ring-opacity-5 rounded-lg">
         <table className="min-w-full divide-y divide-gray-300">
-          <thead className="bg-gray-50">
+          <thead className="bg-[#355676]">
             <tr>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Name
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Phone
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Status
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Created At
-              </th>
-              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                Actions
-              </th>
+              {["Name", "Phone", "Status", "Created At", "Actions"].map(
+                (header) => (
+                  <th
+                    key={header}
+                    className="px-6 py-3 text-left text-xs font-medium uppercase text-[#E6D5B8]"
+                  >
+                    {header}
+                  </th>
+                )
+              )}
             </tr>
           </thead>
+
           <tbody className="bg-white divide-y divide-gray-200">
             {users.map((user: any) => (
-              <tr key={user._id}>
-                <td className="px-6 py-4">{user.name}</td>
-                <td className="px-6 py-4">{user.phone}</td>
+              <tr key={user._id} className="hover:bg-gray-50">
+                <td className="px-6 py-4 text-[#355676] font-medium">
+                  {user.name}
+                </td>
+                <td className="px-6 py-4 text-[#355676]">{user.phone}</td>
                 <td className="px-6 py-4">
                   <span
-                    className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
                       user.isActive
                         ? "bg-green-100 text-green-800"
                         : "bg-red-100 text-red-800"
@@ -82,10 +116,12 @@ const totalPages = Math.ceil((data?.total || 0) / limit);
                 </td>
                 <td className="px-6 py-4 text-sm font-medium">
                   <button
-                    onClick={() => handleToggleBlock(user._id)}
-                    className="text-red-600 hover:text-red-900"
+                    onClick={() =>
+                      handleToggleBlock(user._id, user.isActive)
+                    }
+                    className="px-3 py-1 rounded text-red-500 hover:text-[#C8A978] font-semibold"
                   >
-                    {user.isActive ? "Deactivate" : "Activate"}
+                    {user.isActive ? "Block User" : "Unblock User"}
                   </button>
                 </td>
               </tr>
@@ -94,22 +130,57 @@ const totalPages = Math.ceil((data?.total || 0) / limit);
         </table>
       </div>
 
+      {/* Mobile Cards */}
+      <div className="md:hidden space-y-4">
+        {users.map((user: any) => (
+          <div
+            key={user._id}
+            className="bg-white shadow-md rounded-lg p-4 space-y-2"
+          >
+            <div className="flex justify-between items-center">
+              <h3 className="text-[#355676] font-semibold text-lg">
+                {user.name}
+              </h3>
+              <span
+                className={`px-2 py-1 text-xs font-semibold rounded-full ${
+                  user.isActive
+                    ? "bg-green-100 text-green-800"
+                    : "bg-red-100 text-red-800"
+                }`}
+              >
+                {user.isActive ? "Active" : "Inactive"}
+              </span>
+            </div>
+            <p className="text-[#355676] font-medium">Phone: {user.phone}</p>
+            <p className="text-gray-500 text-sm">
+              Created: {new Date(user.createdAt).toLocaleDateString()}
+            </p>
+            <button
+              onClick={() => handleToggleBlock(user._id, user.isActive)}
+              className="w-full px-3 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] font-semibold"
+            >
+              {user.isActive ? "Block User" : "Unblock User"}
+            </button>
+          </div>
+        ))}
+      </div>
+
       {/* Pagination Controls */}
-      <div className="flex justify-between items-center mt-4">
+      <div className="flex flex-col md:flex-row justify-between items-center mt-6 space-y-2 md:space-y-0">
         <button
           disabled={page === 1}
           onClick={() => setPage((p) => p - 1)}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="px-4 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] disabled:opacity-50"
         >
           Previous
         </button>
-        <span>
+        <span className="text-[#355676] font-medium">
           Page {page} of {totalPages}
         </span>
         <button
           disabled={page === totalPages}
           onClick={() => setPage((p) => p + 1)}
-          className="px-3 py-1 bg-gray-200 rounded disabled:opacity-50"
+          className="px-4 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] disabled:opacity-50"
         >
           Next
         </button>
