@@ -1,5 +1,6 @@
 
 import AgentManagement from "../pages/Admin/AgentManagement";
+import TransactionList_Admin from "../pages/Admin/TransactionList_Admin";
 import UserManagement from "../pages/Admin/UserManagement";
 import WalletManagement from "../pages/Admin/WalletManagement";
 import Login from "../pages/login";
@@ -32,6 +33,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "Wallet Management",
         url: "/admin/manage-wallet",
         component: WalletManagement
+      },
+      {
+        title: "All Trasactions",
+        url: "/admin/transaction",
+        component: TransactionList_Admin
       },
     ],
   },

@@ -1,5 +1,6 @@
 import React from "react";
 import type { TransactionListProps } from "../../types/transaction";
+import LoadingScreen from "../../shared/LoaingScreen";
 
 
 
@@ -8,13 +9,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
   isLoading,
 }) => {
   if (isLoading) {
-    return (
-      <div className="animate-pulse">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-16 bg-[#355676] opacity-50 rounded mb-2"></div>
-        ))}
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   if (transactions.length === 0) {
@@ -61,7 +56,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
       <table className="hidden sm:table min-w-full divide-y divide-[#E6D5B8]/20">
         <thead className="bg-[#355676]">
           <tr>
-            {["Type", "Amount", "Date", "Status"].map((header) => (
+            {["Type", "Amount","From", "To", "Date", "Status"].map((header) => (
               <th
                 key={header}
                 scope="col"
@@ -92,6 +87,13 @@ const TransactionList: React.FC<TransactionListProps> = ({
               >
                 ৳{transaction.amount.toFixed(2)}
               </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
+  {typeof transaction?.from === "string" ? transaction.from : transaction.from._id}
+</td>
+<td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
+  {typeof transaction?.to === "string" ? transaction.to : transaction.to._id}
+</td>
+
               <td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
                 {new Date(transaction.createdAt).toLocaleDateString()}
               </td>
