@@ -1,14 +1,9 @@
 import React from "react";
-import type { Wallet } from "../../types";
-import { motion } from "framer-motion";
 
-interface WalletCardProps {
-  wallet: Wallet | undefined;
-  isLoading: boolean;
-  onAddMoney: () => void;
-  onWithdraw: () => void;
-  onSendMoney: () => void;
-}
+import { motion } from "framer-motion";
+import type { WalletCardProps } from "../../types/wallet";
+
+
 
 const WalletCard: React.FC<WalletCardProps> = ({
   wallet,

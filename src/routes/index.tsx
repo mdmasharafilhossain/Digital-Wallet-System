@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router";
+import { createBrowserRouter, Navigate } from "react-router";
 import App from "../App";
 import Login from "../pages/login";
 import Register from "../pages/Register";
@@ -8,6 +8,7 @@ import { generateRoutes } from "../utils/generateRoutes";
 import { userSidebarItems } from "./userSidebarItems";
 import { withAuth } from "../utils/withAuth";
 import { role } from "../constants/role";
+import { adminSidebarItems } from "./adminSidebarItems";
 
 
 
@@ -37,8 +38,16 @@ export const router = createBrowserRouter([
     path: "/user",
     Component: withAuth(() => <DashboardLayout role={role.user} />, role.user),
     children: [
-      // { index: true, element: <Navigate to="/dashboard/bookings" /> },
+      { index: true, element: <Navigate to="/user/dashboard" /> },
       ...generateRoutes(userSidebarItems),
+    ],
+  },
+   {
+    path: "/admin",
+    Component: withAuth(() => <DashboardLayout role={role.admin} />, role.admin),
+    children: [
+      // { index: true, element: <Navigate to="/user/dashboard" /> },
+      ...generateRoutes(adminSidebarItems),
     ],
   },
 ]);
