@@ -74,7 +74,7 @@ const UserManagement: React.FC = () => {
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-[#355676]">
             <tr>
-              {["Name", "Phone", "Status", "Created At", "Actions"].map(
+              {["Name","ID" ,"Phone", "Status", "Created At", "Actions"].map(
                 (header) => (
                   <th
                     key={header}
@@ -93,6 +93,7 @@ const UserManagement: React.FC = () => {
                 <td className="px-6 py-4 text-[#355676] font-medium">
                   {user.name}
                 </td>
+                <td className="px-6 py-4 text-[#355676]">{user._id}</td>
                 <td className="px-6 py-4 text-[#355676]">{user.phone}</td>
                 <td className="px-6 py-4">
                   <span
@@ -150,6 +151,7 @@ const UserManagement: React.FC = () => {
               </span>
             </div>
             <p className="text-[#355676] font-medium">Phone: {user.phone}</p>
+            <p className="text-[#355676] font-medium">ID: {user._id}</p>
             <p className="text-gray-500 text-sm">
               Created: {new Date(user.createdAt).toLocaleDateString()}
             </p>
