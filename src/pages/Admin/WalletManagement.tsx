@@ -85,7 +85,7 @@ console.log(id, "User ID");
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-[#355676]">
             <tr>
-              {["Name", "Phone", "Wallet Balance", "Status", "Actions"].map(
+              {["Name", "Phone", "Wallet Balance", "Wallet Status", "Actions"].map(
                 (header) => (
                   <th
                     key={header}

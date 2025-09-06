@@ -52,7 +52,7 @@ export const transactionApi = createApi({
       }
     >({
       query: (params) => ({
-        url: "/admin/transactions",
+        url: "/transactions/all",
         params,
       }),
       transformResponse: (response: {

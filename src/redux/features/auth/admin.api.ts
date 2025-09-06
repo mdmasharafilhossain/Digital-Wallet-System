@@ -35,7 +35,7 @@ export const adminApi = createApi({
     url: "/admin/wallets",
     params,
   }),
-  // Optional: keep cached data while new data is fetching
+  
   keepUnusedDataFor: 60,
 }),
     toggleWalletBlock: builder.mutation<Wallet, { id: string }>({
