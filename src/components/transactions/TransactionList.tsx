@@ -1,5 +1,6 @@
 import React from "react";
 import type { TransactionListProps } from "../../types/transaction";
+import LoadingScreen from "../../shared/LoaingScreen";
 
 
 
@@ -8,13 +9,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
   isLoading,
 }) => {
   if (isLoading) {
-    return (
-      <div className="animate-pulse">
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-16 bg-[#355676] opacity-50 rounded mb-2"></div>
-        ))}
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   if (transactions.length === 0) {
@@ -61,7 +56,7 @@ const TransactionList: React.FC<TransactionListProps> = ({
       <table className="hidden sm:table min-w-full divide-y divide-[#E6D5B8]/20">
         <thead className="bg-[#355676]">
           <tr>
-            {["Type", "Amount", "Date", "Status"].map((header) => (
+            {["Type", "Amount","From", "To", "Date", "Status"].map((header) => (
               <th
                 key={header}
                 scope="col"
@@ -92,6 +87,13 @@ const TransactionList: React.FC<TransactionListProps> = ({
               >
                 ৳{transaction.amount.toFixed(2)}
               </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
+  {typeof transaction?.from === "string" ? transaction.from : transaction.from._id}
+</td>
+<td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
+  {typeof transaction?.to === "string" ? transaction.to : transaction.to._id}
+</td>
+
               <td className="px-6 py-4 whitespace-nowrap text-sm text-[#E6D5B8]/80">
                 {new Date(transaction.createdAt).toLocaleDateString()}
               </td>
@@ -140,22 +142,25 @@ const TransactionList: React.FC<TransactionListProps> = ({
               </span>
             </div>
 
-            <div className="mt-2 flex justify-between text-sm text-[#E6D5B8]/80">
-              <span>{new Date(transaction.createdAt).toLocaleDateString()}</span>
-              <span
-                className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  transaction.status === "completed"
-                    ? "bg-green-700 text-green-200"
-                    : transaction.status === "pending"
-                    ? "bg-yellow-700 text-yellow-200"
-                    : transaction.status === "failed"
-                    ? "bg-red-700 text-red-200"
-                    : "bg-gray-700 text-gray-200"
-                }`}
-              >
-                {transaction.status}
-              </span>
-            </div>
+            <div className="mt-2 flex flex-col text-sm text-[#E6D5B8]/80 space-y-1">
+  <span>From: {typeof transaction.from === "string" ? transaction.from : transaction.from._id}</span>
+  <span>To: {typeof transaction.to === "string" ? transaction.to : transaction.to._id}</span>
+  <span>Date: {new Date(transaction.createdAt).toLocaleDateString()}</span>
+  <span
+    className={`px-2 py-1 text-center text-xs font-medium ${
+      transaction.status === "completed"
+        ? "bg-green-700 text-green-200"
+        : transaction.status === "pending"
+        ? "bg-yellow-700 text-yellow-200"
+        : transaction.status === "failed"
+        ? "bg-red-700 text-red-200"
+        : "bg-gray-700 text-gray-200"
+    }`}
+  >
+    {transaction.status}
+  </span>
+</div>
+
           </div>
         ))}
       </div>
