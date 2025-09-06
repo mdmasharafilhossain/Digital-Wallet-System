@@ -1,6 +1,7 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import baseQuery from "./baseApi";
 import type { PaginationParams, Transaction, User, Wallet } from "../../../types";
+import type { WalletResponse } from "../../../types/wallet";
 
 export const adminApi = createApi({
   reducerPath: 'adminApi',
@@ -29,12 +30,14 @@ export const adminApi = createApi({
   }),
 }),
 
-    getAllWallets: builder.query<Wallet[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/wallets',
-        params,
-      }),
-    }),
+    getAllWallets: builder.query<WalletResponse, PaginationParams>({
+  query: (params) => ({
+    url: "/admin/wallets",
+    params,
+  }),
+  // Optional: keep cached data while new data is fetching
+  keepUnusedDataFor: 60,
+}),
     toggleWalletBlock: builder.mutation<Wallet, { id: string }>({
       query: ({ id }) => ({
         url: `/admin/wallets/${id}/block`,

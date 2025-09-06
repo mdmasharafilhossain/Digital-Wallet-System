@@ -20,3 +20,16 @@ export interface WithdrawMoneyModalProps {
   isOpen: boolean;
   onClose: () => void;
 }
+export interface WalletResponse {
+  status: string;
+  results: number;
+  pagination: {
+    total: number;
+    page: number;
+    limit: number;
+    totalPages: number;
+  };
+  data: {
+    wallets: Wallet[];
+  };
+}
