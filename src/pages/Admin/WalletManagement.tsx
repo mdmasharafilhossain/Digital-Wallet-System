@@ -11,7 +11,7 @@ const MySwal = withReactContent(Swal);
 
 const WalletManagement: React.FC = () => {
   const [page, setPage] = useState(1);
-  const limit = 5;
+  const limit = 10;
 
   // Fetch wallets
   const { data, isLoading, refetch } = useGetAllWalletsQuery(
@@ -25,11 +25,11 @@ const WalletManagement: React.FC = () => {
 
   const [toggleAgentApproval] = useToggleAgentApprovalMutation();
 
-  const handleToggleBlock = async (id: string, isApproved: boolean) => {
-    const action = isApproved ? "Suspend" : "Approve";
+  const handleToggleBlock = async (id: string, isBlocked: boolean) => {
+    const action = isBlocked ? "Unblock" : "Block";
 
     const result = await MySwal.fire({
-      title: `Are you sure you want to ${action} this Agent?`,
+      title: `Are you sure you want to ${action} this User?`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonText: "Yes",
@@ -46,17 +46,17 @@ const WalletManagement: React.FC = () => {
         refetch();
         MySwal.fire({
           icon: "success",
-          title: `Agent ${action}d successfully!`,
+          title: `User ${action}d successfully!`,
           background: "#355676",
           color: "#E6D5B8",
           timer: 1500,
           showConfirmButton: false,
         });
       } catch (err) {
-        console.error("Failed to toggle agent approval:", err);
+        console.error("Failed to toggle user approval:", err);
         MySwal.fire({
           icon: "error",
-          title: "Failed to update Agent!",
+          title: "Failed to update User!",
           background: "#355676",
           color: "#E6D5B8",
         });
@@ -84,7 +84,7 @@ const WalletManagement: React.FC = () => {
         <table className="min-w-full divide-y divide-gray-300">
           <thead className="bg-[#355676]">
             <tr>
-              {["Agent Name", "Phone", "Wallet Balance", "Status", "Actions"].map(
+              {["Name", "Phone", "Wallet Balance", "Status", "Actions"].map(
                 (header) => (
                   <th
                     key={header}
@@ -105,28 +105,28 @@ const WalletManagement: React.FC = () => {
                 <tr key={wallet._id} className="hover:bg-gray-50">
                   <td className="px-6 py-4 text-[#355676] font-medium">{user.name}</td>
                   <td className="px-6 py-4 text-[#355676]">{user.phone}</td>
-                  <td className="px-6 py-4 text-[#355676]">{wallet.balance}</td>
+                  <td className="px-6 py-4 text-[#355676]">{wallet.balance} Tk</td>
                   <td className="px-6 py-4">
                     <span
                       className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        user.isAgentApproved
+                        !user.isBlocked
                           ? "bg-green-100 text-green-800"
                           : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {user.isAgentApproved ? "Approved" : "Suspended / Pending"}
+                      {user.isBlocked ? "Blocked" : "Active"}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm font-medium">
                     <button
-                      onClick={() => handleToggleBlock(user._id, user.isAgentApproved)}
+                      onClick={() => handleToggleBlock(user._id, user.isBlocked)}
                       className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        user.isAgentApproved
+                        !user.isBlocked
                           ? "bg-red-100 text-red-800"
                           : "bg-green-100 text-green-800"
                       }`}
                     >
-                      {user.isAgentApproved ? "Suspend Agent" : "Approve Agent"}
+                      {user.isBlocked ? "Unblock Wallet" : "Block Wallet"}
                     </button>
                   </td>
                 </tr>
@@ -147,19 +147,19 @@ const WalletManagement: React.FC = () => {
                 <h3 className="text-[#355676] font-semibold text-lg">{user.name}</h3>
                 <span
                   className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                    user.isActive ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                    !user.isBlocked ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
                   }`}
                 >
-                  {user.isActive ? "Active" : "Inactive"}
+                  {user.isBlocked ? "Blocked" : "Active"}
                 </span>
               </div>
               <p className="text-[#355676] font-medium">Phone: {user.phone}</p>
-              <p className="text-[#355676] font-medium">Balance: {wallet.balance}</p>
+              <p className="text-[#355676] font-medium">Balance: {wallet.balance} Tk</p>
               <button
-                onClick={() => handleToggleBlock(user._id, user.isAgentApproved)}
+                onClick={() => handleToggleBlock(user._id, user.isBlocked)}
                 className="w-full px-3 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] font-semibold"
               >
-                {user.isAgentApproved ? "Suspend Agent" : "Approve Agent"}
+                {!user.isBlocked ? "Block Wallet" : "Active Wallet"}
               </button>
             </div>
           );
