@@ -2,7 +2,8 @@
 import React, { useState } from "react";
 import {
   useGetAllWalletsQuery,
-  useToggleAgentApprovalMutation,
+  
+  useToggleWalletBlockMutation,
 } from "../../redux/features/auth/admin.api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -23,11 +24,11 @@ const WalletManagement: React.FC = () => {
   const wallets = data?.data.wallets || [];
   const totalPages = data?.pagination?.totalPages || 1;
 
-  const [toggleAgentApproval] = useToggleAgentApprovalMutation();
+  const [toggleWalletBlock] = useToggleWalletBlockMutation();
 
   const handleToggleBlock = async (id: string, isBlocked: boolean) => {
     const action = isBlocked ? "Unblock" : "Block";
-
+console.log(id, "User ID");
     const result = await MySwal.fire({
       title: `Are you sure you want to ${action} this User?`,
       icon: "warning",
@@ -42,7 +43,7 @@ const WalletManagement: React.FC = () => {
 
     if (result.isConfirmed) {
       try {
-        await toggleAgentApproval({ id }).unwrap();
+        await toggleWalletBlock({ id }).unwrap();
         refetch();
         MySwal.fire({
           icon: "success",
@@ -109,24 +110,24 @@ const WalletManagement: React.FC = () => {
                   <td className="px-6 py-4">
                     <span
                       className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        !user.isBlocked
+                        !wallet.isBlocked
                           ? "bg-green-100 text-green-800"
                           : "bg-red-100 text-red-800"
                       }`}
                     >
-                      {user.isBlocked ? "Blocked" : "Active"}
+                      {wallet.isBlocked ? "Blocked" : "Active"}
                     </span>
                   </td>
                   <td className="px-6 py-4 text-sm font-medium">
                     <button
-                      onClick={() => handleToggleBlock(user._id, user.isBlocked)}
+                      onClick={() => handleToggleBlock(wallet._id, wallet.isBlocked)}
                       className={`px-3 py-1 text-xs font-semibold rounded-full ${
-                        !user.isBlocked
+                        !wallet.isBlocked
                           ? "bg-red-100 text-red-800"
                           : "bg-green-100 text-green-800"
                       }`}
                     >
-                      {user.isBlocked ? "Unblock Wallet" : "Block Wallet"}
+                      {wallet.isBlocked ? "Unblock Wallet" : "Block Wallet"}
                     </button>
                   </td>
                 </tr>
@@ -147,19 +148,19 @@ const WalletManagement: React.FC = () => {
                 <h3 className="text-[#355676] font-semibold text-lg">{user.name}</h3>
                 <span
                   className={`px-2 py-1 text-xs font-semibold rounded-full ${
-                    !user.isBlocked ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
+                    !wallet.isBlocked ? "bg-green-100 text-green-800" : "bg-red-100 text-red-800"
                   }`}
                 >
-                  {user.isBlocked ? "Blocked" : "Active"}
+                  {wallet.isBlocked ? "Blocked" : "Active"}
                 </span>
               </div>
               <p className="text-[#355676] font-medium">Phone: {user.phone}</p>
               <p className="text-[#355676] font-medium">Balance: {wallet.balance} Tk</p>
               <button
-                onClick={() => handleToggleBlock(user._id, user.isBlocked)}
+                onClick={() => handleToggleBlock(wallet._id, wallet.isBlocked)}
                 className="w-full px-3 py-2 rounded bg-[#355676] text-[#E6D5B8] hover:text-[#C8A978] font-semibold"
               >
-                {!user.isBlocked ? "Block Wallet" : "Active Wallet"}
+                {!wallet.isBlocked ? "Block Wallet" : "Active Wallet"}
               </button>
             </div>
           );
