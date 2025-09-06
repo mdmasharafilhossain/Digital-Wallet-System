@@ -21,7 +21,7 @@ const AgentManagement: React.FC = () => {
 
   const agents = data?.agents || [];
   const totalPages = Math.ceil((data?.total || 0) / limit);
-  console.log(agents,"agents");
+  
 
   const handleToggleBlock = async (id: string, isActive: boolean) => {
     const action = isActive ? "Suspend" : "Approve";

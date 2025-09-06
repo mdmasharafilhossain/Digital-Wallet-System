@@ -119,7 +119,11 @@ const UserManagement: React.FC = () => {
                     onClick={() =>
                       handleToggleBlock(user._id, user.isActive)
                     }
-                    className="px-3 py-1 rounded text-red-500 hover:text-[#C8A978] font-semibold"
+                    className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                      user.isActive
+                        ? "bg-red-100 text-red-800"
+                        : "bg-green-100 text-green-800"
+                    }`}
                   >
                     {user.isActive ? "Block User" : "Unblock User"}
                   </button>
