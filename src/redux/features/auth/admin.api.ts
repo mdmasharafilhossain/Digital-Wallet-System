@@ -1,29 +1,43 @@
 import { createApi } from "@reduxjs/toolkit/query/react";
 import baseQuery from "./baseApi";
 import type { PaginationParams, Transaction, User, Wallet } from "../../../types";
+import type { WalletResponse } from "../../../types/wallet";
 
 export const adminApi = createApi({
   reducerPath: 'adminApi',
   baseQuery,
   endpoints: (builder) => ({
-    getAllUsers: builder.query<User[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/users',
-        params,
-      }),
-    }),
-    getAllAgents: builder.query<User[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/agents',
-        params,
-      }),
-    }),
-    getAllWallets: builder.query<Wallet[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/wallets',
-        params,
-      }),
-    }),
+    getAllUsers: builder.query<{ users: User[]; total: number }, PaginationParams>({
+  query: (params) => ({
+    url: '/admin/users',
+    params,
+  }),
+  transformResponse: (response: { status: string; results: number; data: { users: User[] } }) => ({
+    users: response.data.users,
+    total: response.results, // keep total for pagination
+  }),
+}),
+
+
+    getAllAgents: builder.query<{ agents: User[]; total: number }, PaginationParams>({
+  query: (params) => ({
+    url: '/admin/agents',
+    params,
+  }),
+  transformResponse: (response: { status: string; results: number; data: { agents: User[] } }) => ({
+    agents: response.data.agents,
+    total: response.results, // keep total for pagination
+  }),
+}),
+
+    getAllWallets: builder.query<WalletResponse, PaginationParams>({
+  query: (params) => ({
+    url: "/admin/wallets",
+    params,
+  }),
+  
+  keepUnusedDataFor: 60,
+}),
     toggleWalletBlock: builder.mutation<Wallet, { id: string }>({
       query: ({ id }) => ({
         url: `/admin/wallets/${id}/block`,
@@ -55,7 +69,14 @@ export const adminApi = createApi({
         body,
       }),
     }),
+     toggleUserBlock: builder.mutation<User, { id: string }>({
+  query: ({ id }) => ({
+    url: `/admin/users/${id}/block`,
+    method: 'PATCH',
   }),
+}),
+  }),
+  
 })
 
 
@@ -67,4 +88,5 @@ export const {
   useToggleAgentApprovalMutation,
   useReverseTransactionMutation,
   useAdjustWalletBalanceMutation,
+  useToggleUserBlockMutation
 } = adminApi
