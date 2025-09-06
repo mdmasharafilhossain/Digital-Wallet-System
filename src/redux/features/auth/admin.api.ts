@@ -6,12 +6,18 @@ export const adminApi = createApi({
   reducerPath: 'adminApi',
   baseQuery,
   endpoints: (builder) => ({
-    getAllUsers: builder.query<User[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/users',
-        params,
-      }),
-    }),
+    getAllUsers: builder.query<{ users: User[]; total: number }, PaginationParams>({
+  query: (params) => ({
+    url: '/admin/users',
+    params,
+  }),
+  transformResponse: (response: { status: string; results: number; data: { users: User[] } }) => ({
+    users: response.data.users,
+    total: response.results, // keep total for pagination
+  }),
+}),
+
+
     getAllAgents: builder.query<User[], PaginationParams>({
       query: (params) => ({
         url: '/admin/agents',
@@ -55,7 +61,14 @@ export const adminApi = createApi({
         body,
       }),
     }),
+    toggleUserBlock: builder.mutation<User, { id: string }>({
+  query: ({ id }) => ({
+    url: `/admin/users/${id}/block`,
+    method: 'PATCH',
   }),
+}),
+  }),
+  
 })
 
 
@@ -67,4 +80,5 @@ export const {
   useToggleAgentApprovalMutation,
   useReverseTransactionMutation,
   useAdjustWalletBalanceMutation,
+  useToggleUserBlockMutation
 } = adminApi

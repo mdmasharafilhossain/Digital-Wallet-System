@@ -34,7 +34,7 @@ const UserDashboard: React.FC = () => {
 
   const transactions = data?.transactions || [];
   const totalPages = data?.totalPages || 0;
-  console.log(transactions,"transactions");
+  
 
   const [showAddMoney, setShowAddMoney] = useState(false);
   const [showWithdraw, setShowWithdraw] = useState(false);

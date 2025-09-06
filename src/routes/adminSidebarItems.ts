@@ -1,4 +1,5 @@
 
+import UserManagement from "../pages/Admin/UserManagement";
 import Login from "../pages/login";
 
 import type { ISidebarItem } from "../types";
@@ -15,11 +16,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         url: "/admin/dashboard",
         component: Login
       },
-    //   {
-    //     title: "Manage Profile",
-    //     url: "/admin/profile",
-    //     component: UserProfile
-    //   },
+      {
+        title: "User Management",
+        url: "/admin/manage-user",
+        component: UserManagement
+      },
     ],
   },
 ];
