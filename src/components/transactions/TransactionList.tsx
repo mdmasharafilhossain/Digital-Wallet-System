@@ -142,22 +142,25 @@ const TransactionList: React.FC<TransactionListProps> = ({
               </span>
             </div>
 
-            <div className="mt-2 flex justify-between text-sm text-[#E6D5B8]/80">
-              <span>{new Date(transaction.createdAt).toLocaleDateString()}</span>
-              <span
-                className={`px-2 py-1 rounded-full text-xs font-medium ${
-                  transaction.status === "completed"
-                    ? "bg-green-700 text-green-200"
-                    : transaction.status === "pending"
-                    ? "bg-yellow-700 text-yellow-200"
-                    : transaction.status === "failed"
-                    ? "bg-red-700 text-red-200"
-                    : "bg-gray-700 text-gray-200"
-                }`}
-              >
-                {transaction.status}
-              </span>
-            </div>
+            <div className="mt-2 flex flex-col text-sm text-[#E6D5B8]/80 space-y-1">
+  <span>From: {typeof transaction.from === "string" ? transaction.from : transaction.from._id}</span>
+  <span>To: {typeof transaction.to === "string" ? transaction.to : transaction.to._id}</span>
+  <span>Date: {new Date(transaction.createdAt).toLocaleDateString()}</span>
+  <span
+    className={`px-2 py-1 text-center text-xs font-medium ${
+      transaction.status === "completed"
+        ? "bg-green-700 text-green-200"
+        : transaction.status === "pending"
+        ? "bg-yellow-700 text-yellow-200"
+        : transaction.status === "failed"
+        ? "bg-red-700 text-red-200"
+        : "bg-gray-700 text-gray-200"
+    }`}
+  >
+    {transaction.status}
+  </span>
+</div>
+
           </div>
         ))}
       </div>
