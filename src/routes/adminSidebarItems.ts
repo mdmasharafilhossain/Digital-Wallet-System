@@ -1,4 +1,5 @@
 
+import AgentManagement from "../pages/Admin/AgentManagement";
 import UserManagement from "../pages/Admin/UserManagement";
 import Login from "../pages/login";
 
@@ -20,6 +21,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "User Management",
         url: "/admin/manage-user",
         component: UserManagement
+      },
+      {
+        title: "Agent Management",
+        url: "/admin/manage-agent",
+        component: AgentManagement
       },
     ],
   },

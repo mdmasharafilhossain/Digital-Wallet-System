@@ -18,12 +18,17 @@ export const adminApi = createApi({
 }),
 
 
-    getAllAgents: builder.query<User[], PaginationParams>({
-      query: (params) => ({
-        url: '/admin/agents',
-        params,
-      }),
-    }),
+    getAllAgents: builder.query<{ agents: User[]; total: number }, PaginationParams>({
+  query: (params) => ({
+    url: '/admin/agents',
+    params,
+  }),
+  transformResponse: (response: { status: string; results: number; data: { agents: User[] } }) => ({
+    agents: response.data.agents,
+    total: response.results, // keep total for pagination
+  }),
+}),
+
     getAllWallets: builder.query<Wallet[], PaginationParams>({
       query: (params) => ({
         url: '/admin/wallets',
