@@ -1,7 +1,6 @@
 
 import Login from "../pages/login";
-import UserDashboard from "../pages/User/UserDashboard";
-import UserProfile from "../pages/User/UserProfile";
+
 import type { ISidebarItem } from "../types";
 
 
