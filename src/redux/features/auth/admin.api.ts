@@ -61,7 +61,7 @@ export const adminApi = createApi({
         body,
       }),
     }),
-    toggleUserBlock: builder.mutation<User, { id: string }>({
+     toggleUserBlock: builder.mutation<User, { id: string }>({
   query: ({ id }) => ({
     url: `/admin/users/${id}/block`,
     method: 'PATCH',
