@@ -6,6 +6,7 @@ import {
 } from "../../redux/features/auth/admin.api";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import LoadingScreen from "../../shared/LoaingScreen";
 
 const MySwal = withReactContent(Swal);
 
@@ -59,14 +60,7 @@ const UserManagement: React.FC = () => {
   };
 
   if (isLoading) {
-    return (
-      <div className="animate-pulse p-4">
-        <div className="h-8 bg-[#355676] rounded w-1/4 mb-4"></div>
-        {[...Array(5)].map((_, i) => (
-          <div key={i} className="h-16 bg-[#355676] rounded mb-2"></div>
-        ))}
-      </div>
-    );
+    return <LoadingScreen/>
   }
 
   return (
