@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import toast from "react-hot-toast";
+
+import Swal from "sweetalert2";
 
 const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -17,7 +18,15 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Thank you for your message! We will get back to you soon.");
+   Swal.fire({
+      title: "Message Sent! 🎉",
+      text: "Thank you for your message. We will get back to you soon.",
+      icon: "success",
+      confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
+      confirmButtonText: "OK",
+    });
     setFormData({ name: "", email: "", subject: "", message: "" });
   };
 
@@ -115,7 +124,7 @@ const Contact: React.FC = () => {
                   <div className="w-6 h-6 mt-1">✉️</div>
                   <div className="ml-3">
                     <h3 className="text-sm font-semibold">Email</h3>
-                    <p className="text-sm opacity-80">info@digitalwallet.com</p>
+                    <p className="text-sm opacity-80">info@Amarwallet.com</p>
                   </div>
                 </div>
                 <div className="flex items-start">
