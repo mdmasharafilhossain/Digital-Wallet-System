@@ -15,6 +15,7 @@ import Home from "../pages/Home";
 import About from "../pages/About";
 import Features from "../pages/Features";
 import Contact from "../pages/Contact";
+import FAQ from "../pages/FAQ";
 
 
 
@@ -50,6 +51,10 @@ export const router = createBrowserRouter([
     {
       Component: Contact,
       path:'/contact'
+    },
+    {
+      Component: FAQ,
+      path:'/faq'
     }
       
         

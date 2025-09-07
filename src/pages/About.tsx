@@ -1,35 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 
-const faqs = [
-  {
-    question: "How do I create an account?",
-    answer:
-      "Click on the Register button and follow the simple steps to create your account.",
-  },
-  {
-    question: "Is Amar Wallet secure?",
-    answer:
-      "Yes! We use bank-level encryption, two-factor authentication, and continuous monitoring to ensure your funds and data are safe.",
-  },
-  {
-    question: "Can I send money internationally?",
-    answer:
-      "Absolutely. Our Amar wallet supports international transfers with minimal fees.",
-  },
-  {
-    question: "Does it cost anything to use?",
-    answer:
-      "Creating an account is free. Some premium features or transfers may include small fees.",
-  },
-  
-];
+
 
 const About: React.FC = () => {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
-  const toggleFAQ = (index: number) => {
-    setOpenIndex(openIndex === index ? null : index);
-  };
+
+  
 
   return (
     <div className="relative min-h-screen">
@@ -87,30 +63,7 @@ const About: React.FC = () => {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="bg-[#355676]/60 backdrop-blur-md shadow-lg rounded-lg p-8 transition-all hover:shadow-2xl">
-          <h2 className="text-2xl font-semibold mb-6 text-center">FAQs</h2>
-          <div className="space-y-4">
-            {faqs.map((faq, index) => (
-              <div key={index} className="border-b border-[#E6D5B8]/30 pb-4">
-                <button
-                  onClick={() => toggleFAQ(index)}
-                  className="w-full flex justify-between items-center text-left focus:outline-none transition-all"
-                >
-                  <span className="font-medium">{faq.question}</span>
-                  <span className="ml-2 text-[#C8A978]">
-                    {openIndex === index ? "−" : "+"}
-                  </span>
-                </button>
-                {openIndex === index && (
-                  <p className="mt-3 text-sm text-[#E6D5B8] transition-all">
-                    {faq.answer}
-                  </p>
-                )}
-              </div>
-            ))}
-          </div>
-        </div>
+       
       </div>
     </div>
   );

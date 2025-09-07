@@ -17,10 +17,11 @@ const faqData = [
     question: "Can I use the wallet internationally?",
     answer: "Currently, the wallet is only available for domestic transactions within Bangladesh."
   },
-  {
-    question: "What if I forget my password?",
-    answer: "You can reset your password via the 'Forgot Password' link on the login page."
-  }
+ {
+    question: "Does it cost anything to use?",
+    answer:
+      "Creating an account is free. Some premium features or transfers may include small fees.",
+  },
 ];
 
 const FAQ: React.FC = () => {
@@ -37,7 +38,7 @@ const FAQ: React.FC = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-3">Frequently Asked Questions</h1>
           <p className="text-lg text-[#C8A978]">
-            Answers to the most common questions about Digital Wallet
+            Answers to the most common questions about Amar Wallet
           </p>
         </div>
 
