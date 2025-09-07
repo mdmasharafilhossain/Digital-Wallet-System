@@ -13,6 +13,7 @@ import { agentSidebarItems } from "./agentSidebarItems";
 import Unauthorized from "../utils/Unauthorized";
 import Home from "../pages/Home";
 import About from "../pages/About";
+import Features from "../pages/Features";
 
 
 
@@ -42,7 +43,7 @@ export const router = createBrowserRouter([
       path:'/about'
     },
     {
-      Component: About,
+      Component: Features,
       path:'/features'
     }
       

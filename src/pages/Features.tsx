@@ -41,7 +41,7 @@ const Features: React.FC = () => {
         <div className="text-center mb-12">
           <h1 className="text-4xl font-bold mb-3">Features</h1>
           <p className="text-lg text-[#C8A978]">
-            Discover all the powerful features that Digital Wallet offers
+            Discover all the powerful features that Amar Wallet offers
           </p>
         </div>
 
