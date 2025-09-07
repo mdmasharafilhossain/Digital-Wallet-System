@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 
 import WalletCard from "../../components/wallet/WalletCard";
 import TransactionList from "../../components/transactions/TransactionList";
-import AddMoneyModal from "../../components/wallet/AddMoneyModal";
-import WithdrawMoneyModal from "../../components/wallet/WithdrawMoneyModal";
-import SendMoneyModal from "../../components/wallet/SendMoneyModal";
+
 
 
 import { useGetWalletQuery } from "../../redux/features/auth/wallet.api";
 import { useGetMyTransactionsQuery } from "../../redux/features/auth/transaction.Api";
 import { useGetProfileQuery } from "../../redux/features/auth/auth.api";
+import CashInModal from "../../components/wallet/CashInModal";
+import CashOutModal from "../../components/wallet/CashOutModal";
 
 const AgentDashboard: React.FC = () => {
   
@@ -36,9 +36,9 @@ const AgentDashboard: React.FC = () => {
   const totalPages = data?.totalPages || 0;
   
 
-  const [showAddMoney, setShowAddMoney] = useState(false);
-  const [showWithdraw, setShowWithdraw] = useState(false);
-  const [showSendMoney, setShowSendMoney] = useState(false);
+  const [showCashIn, setShowCashIn] = useState(false);
+  const [showCashOut, setShowCashOut] = useState(false);
+
 
   return (
     <div className="space-y-10 p-4 md:p-10 bg-gradient-to-b from-[#355676] via-[#2b4455] to-[#1f2e3d] min-h-screen">
@@ -67,9 +67,9 @@ const AgentDashboard: React.FC = () => {
         <WalletCard
           wallet={wallet}
           isLoading={walletLoading}
-          onAddMoney={() => setShowAddMoney(true)}
-          onWithdraw={() => setShowWithdraw(true)}
-          onSendMoney={() => setShowSendMoney(true)}
+           onAddMoney={() => setShowCashIn(true)}
+        onWithdraw={() => setShowCashOut(true)}
+        onSendMoney={() => {}}
         />
       </motion.div>
 
@@ -143,23 +143,17 @@ const AgentDashboard: React.FC = () => {
     </div>
       </motion.div>
 
-      {/* Modals */}
-      {showAddMoney && (
-        <AddMoneyModal
-          isOpen={showAddMoney}
-          onClose={() => setShowAddMoney(false)}
+      {showCashIn && (
+        <CashInModal 
+          isOpen={showCashIn}
+          onClose={() => setShowCashIn(false)}
         />
       )}
-      {showWithdraw && (
-        <WithdrawMoneyModal
-          isOpen={showWithdraw}
-          onClose={() => setShowWithdraw(false)}
-        />
-      )}
-      {showSendMoney && (
-        <SendMoneyModal
-          isOpen={showSendMoney}
-          onClose={() => setShowSendMoney(false)}
+
+      {showCashOut && (
+        <CashOutModal 
+          isOpen={showCashOut}
+          onClose={() => setShowCashOut(false)}
         />
       )}
     </div>

@@ -55,16 +55,26 @@ const WalletCard: React.FC<WalletCardProps> = ({
             disabled={wallet?.isBlocked}
             className="w-full bg-gradient-to-r from-[#E6D5B8] to-[#C8A978] text-[#1c3144] font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
           >
-            ➕ Add Money
+            ➕ Add Money to User
           </button>
         )}
-        <button
+        {
+          wallet?.user?.role === 'user'?
+          <button
           onClick={onWithdraw}
           disabled={wallet?.isBlocked}
           className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
         >
           💵 Withdraw
+        </button> :
+        <button
+          onClick={onWithdraw}
+          disabled={wallet?.isBlocked}
+          className="w-full bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
+        >
+          💵 Withdraw User Money
         </button>
+        }
         <button
           onClick={onSendMoney}
           disabled={wallet?.isBlocked}
