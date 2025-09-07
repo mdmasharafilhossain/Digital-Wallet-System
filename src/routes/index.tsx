@@ -9,6 +9,7 @@ import { userSidebarItems } from "./userSidebarItems";
 import { withAuth } from "../utils/withAuth";
 import { role } from "../constants/role";
 import { adminSidebarItems } from "./adminSidebarItems";
+import { agentSidebarItems } from "./agentSidebarItems";
 
 
 
@@ -46,8 +47,16 @@ export const router = createBrowserRouter([
     path: "/admin",
     Component: withAuth(() => <DashboardLayout role={role.admin} />, role.admin),
     children: [
-      // { index: true, element: <Navigate to="/user/dashboard" /> },
+      { index: true, element: <Navigate to="/admin/dashboard" /> },
       ...generateRoutes(adminSidebarItems),
+    ],
+  },
+   {
+    path: "/agent",
+    Component: withAuth(() => <DashboardLayout role={role.agent} />, role.agent),
+    children: [
+      { index: true, element: <Navigate to="/agent/dashboard" /> },
+      ...generateRoutes(agentSidebarItems),
     ],
   },
 ]);
