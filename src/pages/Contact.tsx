@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import Swal from "sweetalert2";
 
 const Contact: React.FC = () => {
@@ -18,7 +17,7 @@ const Contact: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-   Swal.fire({
+    Swal.fire({
       title: "Message Sent! 🎉",
       text: "Thank you for your message. We will get back to you soon.",
       icon: "success",
@@ -96,84 +95,37 @@ const Contact: React.FC = () => {
             </div>
           </div>
 
-          {/* Contact Info + FAQ */}
-          <div className="space-y-8">
-            {/* Contact Info */}
-            <div className="bg-[#2A4555] shadow-lg rounded-2xl p-8">
-              <h2 className="text-2xl font-semibold mb-6">
-                Contact Information
-              </h2>
-              <div className="space-y-5">
-                <div className="flex items-start">
-                  <div className="w-6 h-6 mt-1">📍</div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-semibold">Address</h3>
-                    <p className="text-sm opacity-80">
-                      123 Financial Street, Dhaka, Bangladesh
-                    </p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 mt-1">📞</div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-semibold">Phone</h3>
-                    <p className="text-sm opacity-80">+880 1234 567890</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 mt-1">✉️</div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-semibold">Email</h3>
-                    <p className="text-sm opacity-80">info@Amarwallet.com</p>
-                  </div>
-                </div>
-                <div className="flex items-start">
-                  <div className="w-6 h-6 mt-1">🕒</div>
-                  <div className="ml-3">
-                    <h3 className="text-sm font-semibold">Business Hours</h3>
-                    <p className="text-sm opacity-80">
-                      Mon - Fri: 9:00 AM - 6:00 PM
-                    </p>
-                    <p className="text-sm opacity-80">
-                      Sat: 10:00 AM - 4:00 PM
-                    </p>
-                  </div>
+          {/* Contact Info */}
+          <div className="bg-[#2A4555] shadow-lg rounded-2xl p-8 space-y-6">
+            <h2 className="text-2xl font-semibold mb-4">Contact Information</h2>
+            <div className="space-y-8">
+              <div className="flex items-start">
+                <div className="w-6 h-6 mt-1">📍</div>
+                <div className="ml-3">
+                  <h3 className="text font-semibold">Address</h3>
+                  <p className="text opacity-80">Rampura, Dhaka, Bangladesh</p>
                 </div>
               </div>
-            </div>
-
-            {/* FAQ */}
-            <div className="bg-[#2A4555] shadow-lg rounded-2xl p-8">
-              <h2 className="text-2xl font-semibold mb-6">
-                Frequently Asked Questions
-              </h2>
-              <div className="space-y-4">
-                <div>
-                  <h3 className="text-sm font-semibold hover:text-[#C8A978] transition-colors">
-                    How do I create an account?
-                  </h3>
-                  <p className="text-sm opacity-80">
-                    Click on the Register button and follow the simple steps to
-                    create your account.
-                  </p>
+              <div className="flex items-start">
+                <div className="w-6 h-6 mt-1">📞</div>
+                <div className="ml-3">
+                  <h3 className="text font-semibold">Phone</h3>
+                  <p className="text opacity-80">+880 1641749267</p>
                 </div>
-                <div>
-                  <h3 className="text-sm font-semibold hover:text-[#C8A978] transition-colors">
-                    Is my money safe?
-                  </h3>
-                  <p className="text-sm opacity-80">
-                    Yes, we use bank-level security measures to protect your
-                    funds and personal information.
-                  </p>
+              </div>
+              <div className="flex items-start">
+                <div className="w-6 h-6 mt-1">✉️</div>
+                <div className="ml-3">
+                  <h3 className="text font-semibold">Email</h3>
+                  <p className="text opacity-80">mashrafilmahi007@gmail.com</p>
                 </div>
-                <div>
-                  <h3 className="text-sm font-semibold hover:text-[#C8A978] transition-colors">
-                    How long do transfers take?
-                  </h3>
-                  <p className="text-sm opacity-80">
-                    Most transfers are instant, but some may take up to 24 hours
-                    depending on the method.
-                  </p>
+              </div>
+              <div className="flex items-start">
+                <div className="w-8 h-8 mt-1">🕒</div>
+                <div className="ml-3">
+                  <h3 className="text font-semibold">Business Hours</h3>
+                  <p className="text opacity-80">Mon - Fri: 9:00 AM - 6:00 PM</p>
+                  <p className="text opacity-80">Sat: 10:00 AM - 4:00 PM</p>
                 </div>
               </div>
             </div>
