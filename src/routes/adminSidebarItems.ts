@@ -1,9 +1,11 @@
 
+import AdminDashboard from "../pages/Admin/AdminDashboard";
 import AgentManagement from "../pages/Admin/AgentManagement";
 import TransactionList_Admin from "../pages/Admin/TransactionList_Admin";
 import UserManagement from "../pages/Admin/UserManagement";
 import WalletManagement from "../pages/Admin/WalletManagement";
-import Login from "../pages/login";
+import UserProfile from "../pages/User/UserProfile";
+
 
 import type { ISidebarItem } from "../types";
 
@@ -17,7 +19,7 @@ export const adminSidebarItems: ISidebarItem[] = [
       {
         title: "Dashboard",
         url: "/admin/dashboard",
-        component: Login
+        component: AdminDashboard
       },
       {
         title: "User Management",
@@ -38,6 +40,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         title: "All Trasactions",
         url: "/admin/transaction",
         component: TransactionList_Admin
+      },
+      {
+        title: "Profile",
+        url: "/admin/profile",
+        component: UserProfile
       },
     ],
   },
