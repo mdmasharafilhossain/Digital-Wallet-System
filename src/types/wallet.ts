@@ -33,3 +33,15 @@ export interface WalletResponse {
     wallets: Wallet[];
   };
 }
+
+
+export interface CashInModalProps {
+  isOpen: boolean
+  onClose: () => void
+}
+
+
+export interface CashOutModalProps {
+  isOpen: boolean
+  onClose: () => void
+}
