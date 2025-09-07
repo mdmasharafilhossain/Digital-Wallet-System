@@ -2,6 +2,11 @@ import React, { useState } from "react";
 
 const faqs = [
   {
+    question: "How do I create an account?",
+    answer:
+      "Click on the Register button and follow the simple steps to create your account.",
+  },
+  {
     question: "Is Amar Wallet secure?",
     answer:
       "Yes! We use bank-level encryption, two-factor authentication, and continuous monitoring to ensure your funds and data are safe.",
