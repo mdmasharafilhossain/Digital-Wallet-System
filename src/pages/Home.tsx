@@ -45,7 +45,7 @@ const Home: React.FC = () => {
               </>
             ) : (
               <Link
-                to="/dashboard"
+                to="/user/dashboard"
                 className="bg-[#E6D5B8] text-[#355676] px-8 py-3 rounded-lg font-semibold shadow-md 
                            hover:bg-[#C8A978] hover:text-white transition-all duration-300"
               >
