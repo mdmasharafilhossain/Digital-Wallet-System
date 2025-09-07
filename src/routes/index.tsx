@@ -40,6 +40,10 @@ export const router = createBrowserRouter([
     {
       Component: About,
       path:'/about'
+    },
+    {
+      Component: About,
+      path:'/features'
     }
       
         
