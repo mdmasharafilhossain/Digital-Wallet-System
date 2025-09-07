@@ -71,8 +71,7 @@ const handleLogout = async () => {
     { href: '/about', label: 'About' },
     { href: '/features', label: 'Features' },
     { href: '/contact', label: 'Contact' },
-    // { href: '/user', label: 'Dashboard' },
-    // { href: '/admin', label: 'Dashboard' },
+    
   ];
   console.log(user,"user from nav");
   return (
