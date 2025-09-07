@@ -89,11 +89,32 @@ const UserProfile = () => {
       >
         <h2 className="text-2xl font-bold mb-4">My Profile</h2>
         <div className="space-y-2">
-          <p><span className="font-semibold">ID:</span> {data?._id}</p>
-          <p><span className="font-semibold">Name:</span> {data?.name}</p>
-          <p><span className="font-semibold">Phone:</span> {data?.phone}</p>
-          <p><span className="font-semibold">Role:</span> {data?.role}</p>
-        </div>
+  <p>
+    <span className="font-semibold">ID:</span> {data?._id}{" "}
+    <button
+      onClick={() => {
+        navigator.clipboard.writeText(data?._id || "");
+        Swal.fire({
+          title: "Copied ✅",
+          text: "ID copied to clipboard",
+          icon: "success",
+          background: "#355676",
+          color: "#E6D5B8",
+          confirmButtonColor: "#2b4455",
+          timer: 1500,
+          showConfirmButton: false,
+        });
+      }}
+      className="ml-2 px-2 py-1 text-xs rounded bg-[#2b4455] hover:bg-[#2b4455]/80 hover:text-[#C8A978] transition"
+    >
+      Copy ID
+    </button>
+  </p>
+  <p><span className="font-semibold">Name:</span> {data?.name}</p>
+  <p><span className="font-semibold">Phone:</span> {data?.phone}</p>
+  <p><span className="font-semibold">Role:</span> {data?.role}</p>
+</div>
+
 
         <button
           onClick={() => setIsModalOpen(true)}
