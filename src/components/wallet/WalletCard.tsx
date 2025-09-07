@@ -75,13 +75,16 @@ const WalletCard: React.FC<WalletCardProps> = ({
           💵 Withdraw User Money
         </button>
         }
-        <button
+       {
+        wallet?.user?.role === 'user' && 
+         <button
           onClick={onSendMoney}
           disabled={wallet?.isBlocked}
           className="w-full bg-gradient-to-r from-purple-500 to-purple-600 text-white font-semibold py-2 px-4 rounded-xl shadow hover:scale-105 transition-transform disabled:opacity-50"
         >
           📤 Send Money
         </button>
+       }
       </div>
     </motion.div>
   );

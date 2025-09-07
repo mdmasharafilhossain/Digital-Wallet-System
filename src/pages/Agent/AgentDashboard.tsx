@@ -92,9 +92,9 @@ const AgentDashboard: React.FC = () => {
           onChange={(e) => { setTypeFilter(e.target.value); setPage(1); }}
         >
           <option value="">All Types</option>
-          <option value="top-up">Top-up</option>
-          <option value="withdraw">Withdraw</option>
-          <option value="send">Send</option>
+          <option value="cash-in">Cash In</option>
+          <option value="cash-out">Cash Out</option>
+          
         </select>
 
         <input
