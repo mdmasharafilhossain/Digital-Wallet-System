@@ -10,6 +10,7 @@ import { withAuth } from "../utils/withAuth";
 import { role } from "../constants/role";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
+import Unauthorized from "../utils/Unauthorized";
 
 
 
@@ -26,6 +27,10 @@ export const router = createBrowserRouter([
       Component: Register,
       path: "/register"
     },
+    {
+      Component : Unauthorized,
+      path:'/unauthorized'
+    }
       
         
 
