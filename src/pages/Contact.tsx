@@ -30,7 +30,7 @@ const Contact: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#355676] text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12">
+    <div className="bg-[#355676] min-h-screen text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
