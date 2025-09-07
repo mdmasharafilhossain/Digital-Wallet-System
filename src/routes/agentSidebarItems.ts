@@ -1,5 +1,6 @@
 
-import UserDashboard from "../pages/User/UserDashboard";
+import AgentDashboard from "../pages/Agent/AgentDashboard";
+
 import UserProfile from "../pages/User/UserProfile";
 import type { ISidebarItem } from "../types";
 
@@ -13,7 +14,7 @@ export const agentSidebarItems: ISidebarItem[] = [
       {
         title: "Dashboard",
         url: "/agent/dashboard",
-        component: UserDashboard
+        component: AgentDashboard
       },
       {
         title: "Manage Profile",
