@@ -20,6 +20,11 @@ export const userSidebarItems: ISidebarItem[] = [
         url: "profile",
         component: UserProfile
       },
+      // {
+      //   title: "Go To Home",
+      //   url: "/",
+      //   component: UserProfile
+      // },
     ],
   },
 ];
