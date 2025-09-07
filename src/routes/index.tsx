@@ -12,6 +12,7 @@ import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
 import Unauthorized from "../utils/Unauthorized";
 import Home from "../pages/Home";
+import About from "../pages/About";
 
 
 
@@ -35,6 +36,10 @@ export const router = createBrowserRouter([
     {
       Component: Home,
       path:'/'
+    },
+    {
+      Component: About,
+      path:'/about'
     }
       
         
