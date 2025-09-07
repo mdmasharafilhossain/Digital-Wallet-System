@@ -14,6 +14,7 @@ import Unauthorized from "../utils/Unauthorized";
 import Home from "../pages/Home";
 import About from "../pages/About";
 import Features from "../pages/Features";
+import Contact from "../pages/Contact";
 
 
 
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
     {
       Component: Features,
       path:'/features'
+    },
+    {
+      Component: Contact,
+      path:'/contact'
     }
       
         
