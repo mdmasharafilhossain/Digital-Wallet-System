@@ -18,7 +18,7 @@ const Home: React.FC = () => {
         <div className="absolute inset-0 bg-black/50" /> {/* overlay */}
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6 drop-shadow-lg">
-            Digital Wallet for Modern Banking
+            Amar Wallet for Modern Banking
           </h1>
           <p className="text-lg md:text-xl mb-8 max-w-3xl mx-auto opacity-90">
             Send, receive, and manage your money securely. Fast, convenient, and trusted by thousands.
@@ -59,7 +59,7 @@ const Home: React.FC = () => {
       {/* Features Section */}
       <section className="py-20 bg-[#355676] text-[#E6D5B8]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Digital Wallet?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose Amar Wallet?</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
             {[
               { icon: '⚡', title: 'Instant Transfers', desc: 'Send and receive money instantly to anyone, anywhere.' },
@@ -100,7 +100,7 @@ const Home: React.FC = () => {
       <section className="py-24 bg-[#355676] text-center">
         <h2 className="text-3xl font-bold mb-6">Ready to get started?</h2>
         <p className="text-lg mb-8 opacity-90">
-          Join thousands of satisfied users who trust Digital Wallet for their financial needs.
+          Join thousands of satisfied users who trust Amar Wallet for their financial needs.
         </p>
         {!isAuthenticated && (
           <Link
