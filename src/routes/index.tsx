@@ -11,6 +11,7 @@ import { role } from "../constants/role";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
 import Unauthorized from "../utils/Unauthorized";
+import Home from "../pages/Home";
 
 
 
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
     {
       Component : Unauthorized,
       path:'/unauthorized'
+    },
+    {
+      Component: Home,
+      path:'/'
     }
       
         
