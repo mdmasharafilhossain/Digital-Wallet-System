@@ -1,4 +1,5 @@
 
+import AdminDashboard from "../pages/Admin/AdminDashboard";
 import AgentManagement from "../pages/Admin/AgentManagement";
 import TransactionList_Admin from "../pages/Admin/TransactionList_Admin";
 import UserManagement from "../pages/Admin/UserManagement";
@@ -17,7 +18,7 @@ export const adminSidebarItems: ISidebarItem[] = [
       {
         title: "Dashboard",
         url: "/admin/dashboard",
-        component: Login
+        component: AdminDashboard
       },
       {
         title: "User Management",
