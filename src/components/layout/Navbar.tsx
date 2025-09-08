@@ -39,9 +39,12 @@ const handleLogout = async () => {
       text: "You will be logged out of your account!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, logout!",
+       confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
     });
 
     if (result.isConfirmed) {
@@ -52,6 +55,9 @@ const handleLogout = async () => {
         icon: "success",
         timer: 2000,
         showConfirmButton: false,
+        
+      background: "#355676",
+      color: "#E6D5B8",
       });
       navigate("/");
     }

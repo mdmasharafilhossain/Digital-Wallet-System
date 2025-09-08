@@ -60,9 +60,10 @@ const UserProfile = () => {
         title: "Success 🎉",
         text: "Profile updated successfully!",
         icon: "success",
-        background: "#355676",
-        color: "#E6D5B8",
-        confirmButtonColor: "#2b4455",
+        
+        confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
       setIsModalOpen(false);
       setFormData({ ...formData, password: "", confirmPassword: "" });
@@ -74,6 +75,7 @@ const UserProfile = () => {
         background: "#355676",
         color: "#E6D5B8",
         confirmButtonColor: "#2b4455",
+        
       });
     }
   };
