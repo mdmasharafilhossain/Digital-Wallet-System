@@ -173,6 +173,7 @@ const handleLogout = async () => {
             <Link
               key={link.href}
               to={link.href}
+              
               onClick={() => setIsMenuOpen(false)}
               className="text-[#E6D5B8] hover:bg-[#1c3144] hover:text-[#C8A978] block px-3 py-2 rounded-md text-base font-medium transition-colors"
             >
