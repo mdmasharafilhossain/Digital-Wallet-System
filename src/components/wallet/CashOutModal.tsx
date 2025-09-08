@@ -19,7 +19,10 @@ const CashOutModal: React.FC<CashOutModalProps> = ({ isOpen, onClose }) => {
             icon: 'warning',
             title: 'Missing Information',
             text: 'Please enter the receiver\'s ID.',
-            confirmButtonColor: '#355676',
+            
+             confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
         });
         return;
     }
@@ -29,7 +32,10 @@ const CashOutModal: React.FC<CashOutModalProps> = ({ isOpen, onClose }) => {
         icon: 'warning',
         title: 'Invalid Amount',
         text: 'Please enter an amount greater than zero.',
-        confirmButtonColor: '#355676',
+        
+         confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
       return;
     }
@@ -48,9 +54,12 @@ const CashOutModal: React.FC<CashOutModalProps> = ({ isOpen, onClose }) => {
         icon: 'success',
         title: 'Money Sent!',
         text: 'Your transaction was successful.',
-        confirmButtonColor: '#355676',
+        
         timer: 2000,
         timerProgressBar: true,
+         confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
     } catch (error: any) {
       Swal.fire({

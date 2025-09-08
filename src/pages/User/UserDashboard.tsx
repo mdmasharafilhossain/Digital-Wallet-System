@@ -41,7 +41,7 @@ const UserDashboard: React.FC = () => {
   const [showSendMoney, setShowSendMoney] = useState(false);
 
   return (
-    <div className="space-y-10 p-4 md:p-10 bg-gradient-to-b from-[#355676] via-[#2b4455] to-[#1f2e3d] min-h-screen">
+    <div className="space-y-10 p-4 md:p-10 bg-gradient-to-b from-[#355676] via-[#2b4455] to-[#1f2e3d] min-h-screen" id="quick-actions">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: -30 }}
@@ -63,7 +63,7 @@ const UserDashboard: React.FC = () => {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className=" mx-auto w-full"
-      >
+       id="wallet-balance">
         <WalletCard
           wallet={wallet}
           isLoading={walletLoading}
@@ -80,7 +80,7 @@ const UserDashboard: React.FC = () => {
         transition={{ duration: 0.7, ease: "easeOut" }}
         className="bg-[#355676]/90 shadow-xl rounded-2xl p-6 md:p-8 backdrop-blur-md"
       >
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between mb-6" id="recent-transactions">
           <h2 className="text-2xl font-semibold text-[#E6D5B8] drop-shadow">
             Recent Transactions
           </h2>

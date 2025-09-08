@@ -53,6 +53,7 @@ console.log(id, "User ID");
           color: "#E6D5B8",
           timer: 1500,
           showConfirmButton: false,
+          
         });
       } catch (err) {
         console.error("Failed to toggle user approval:", err);

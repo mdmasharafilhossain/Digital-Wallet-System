@@ -37,7 +37,10 @@ const [showPassword, setShowPassword] = useState(false);
           title: 'Login Successful!',
           text: "You will be redirected shortly.",
           timer: 1500,
-          showConfirmButton: false
+          showConfirmButton: false,
+           
+      background: "#355676",
+      color: "#E6D5B8",
       });
       navigate(from, { replace: true });
     } catch (error: any) {
@@ -54,6 +57,9 @@ const [showPassword, setShowPassword] = useState(false);
     icon: 'error',
     title: 'Oops...',
     text: errorMessage,
+     confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
   });
   console.error(error);
     }
