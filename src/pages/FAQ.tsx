@@ -32,7 +32,7 @@ const FAQ: React.FC = () => {
   };
 
   return (
-    <div className="bg-[#355676] text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12 min-h-screen">
+    <div className="bg-[#355676] text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12 min-h-screen" id="faq">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">

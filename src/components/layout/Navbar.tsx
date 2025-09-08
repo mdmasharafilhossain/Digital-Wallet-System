@@ -39,9 +39,12 @@ const handleLogout = async () => {
       text: "You will be logged out of your account!",
       icon: "warning",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
+      
       cancelButtonColor: "#d33",
       confirmButtonText: "Yes, logout!",
+       confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
     });
 
     if (result.isConfirmed) {
@@ -52,6 +55,9 @@ const handleLogout = async () => {
         icon: "success",
         timer: 2000,
         showConfirmButton: false,
+        
+      background: "#355676",
+      color: "#E6D5B8",
       });
       navigate("/");
     }
@@ -68,15 +74,15 @@ const handleLogout = async () => {
 
   const navLinks = [
     { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/features', label: 'Features' },
-    { href: '/contact', label: 'Contact' },
-    { href: '/faq', label: 'FAQ' },
+    { href: '/about', label: 'About' , id :'about'},
+    { href: '/features', label: 'Features' , id: 'features' },
+    { href: '/contact', label: 'Contact',  id: 'contact'},
+    { href: '/faq', label: 'FAQ',id:'faq' },
     
   ];
-  console.log(user,"user from nav");
+  
   return (
-    <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300">
+    <nav className="bg-[#1c3144] shadow-md sticky top-0 z-50 transition-all duration-300 "  id="sidebar-nav">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo / Brand Name */}
@@ -89,6 +95,7 @@ const handleLogout = async () => {
             {navLinks.map((link) => (
               <Link
                 key={link.href}
+                id={link.id}
                 to={link.href}
                 className="text-[#E6D5B8] hover:text-[#C8A978] px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
               >
@@ -105,7 +112,7 @@ const handleLogout = async () => {
           : '/user'
       }
       className="text-[#E6D5B8] hover:text-[#C8A978] px-3 py-2 rounded-md text-[18px] font-medium transition-colors"
-    >
+    id="dashboard">
       Dashboard
     </Link>
   )}
@@ -119,7 +126,7 @@ const handleLogout = async () => {
                 <button
                   onClick={handleLogout}
                   className="bg-[#355676] text-[#E6D5B8] px-4 py-2 rounded-md text-[18px] font-medium hover:text-[#C8A978] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#C8A978] transition-all"
-                >
+                id="logout">
                   Logout
                 </button>
               </>
@@ -166,6 +173,7 @@ const handleLogout = async () => {
             <Link
               key={link.href}
               to={link.href}
+              
               onClick={() => setIsMenuOpen(false)}
               className="text-[#E6D5B8] hover:bg-[#1c3144] hover:text-[#C8A978] block px-3 py-2 rounded-md text-base font-medium transition-colors"
             >

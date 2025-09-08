@@ -33,6 +33,7 @@ const UserManagement: React.FC = () => {
       color: "#E6D5B8",
       confirmButtonColor: "#C8A978",
       cancelButtonColor: "#E6D5B8",
+      
     });
 
     if (result.isConfirmed) {

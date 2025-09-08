@@ -46,6 +46,11 @@ export const adminSidebarItems: ISidebarItem[] = [
         url: "/admin/profile",
         component: UserProfile
       },
+      {
+        title: "Go To Home",
+        url: "../",
+        component: null
+      },
     ],
   },
 ];

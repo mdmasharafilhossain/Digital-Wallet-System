@@ -52,6 +52,9 @@ const Register: React.FC = () => {
         text: "Redirecting to login...",
         timer: 1500,
         showConfirmButton: false,
+         confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
       navigate('/login');
     } catch (error) {
@@ -59,6 +62,9 @@ const Register: React.FC = () => {
         icon: 'error',
         title: 'Oops...',
         text: 'Registration failed!',
+         confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
       console.error(error);
     }

@@ -19,7 +19,10 @@ const SendMoneyModal: React.FC<SendMoneyModalProps> = ({ isOpen, onClose }) => {
             icon: 'warning',
             title: 'Missing Information',
             text: 'Please enter the receiver\'s phone number.',
-            confirmButtonColor: '#355676',
+            
+             confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
         });
         return;
     }
@@ -29,7 +32,10 @@ const SendMoneyModal: React.FC<SendMoneyModalProps> = ({ isOpen, onClose }) => {
         icon: 'warning',
         title: 'Invalid Amount',
         text: 'Please enter an amount greater than zero.',
-        confirmButtonColor: '#355676',
+        
+         confirmButtonColor: "#C8A978",
+      background: "#355676",
+      color: "#E6D5B8",
       });
       return;
     }
