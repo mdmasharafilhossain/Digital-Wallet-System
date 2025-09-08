@@ -81,7 +81,7 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6" id="user-profile">
       {/* Profile Card */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}

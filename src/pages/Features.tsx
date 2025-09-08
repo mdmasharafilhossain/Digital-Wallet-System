@@ -35,7 +35,7 @@ const Features: React.FC = () => {
   ];
 
   return (
-    <div className="bg-[#355676] text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12">
+    <div className="bg-[#355676] text-[#E6D5B8] py-16 px-6 sm:px-8 lg:px-12" id="features">
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
         <div className="text-center mb-12">

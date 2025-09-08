@@ -8,7 +8,7 @@ const About: React.FC = () => {
   
 
   return (
-    <div className="relative min-h-screen">
+    <div className="relative min-h-screen" id="about">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=1950&q=80')] bg-cover bg-center"></div>
       <div className="absolute inset-0 bg-[#355676]/90"></div>
