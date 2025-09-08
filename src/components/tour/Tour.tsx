@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Joyride, { type Step, type CallBackProps, STATUS, ACTIONS } from 'react-joyride';
-import { useDispatch, useSelector } from 'react-redux';
+
 
 import { XMarkIcon, ArrowPathIcon } from '@heroicons/react/24/outline';
-import toast from 'react-hot-toast';
-import type { RootState } from '../../redux/store/store';
+
 import type { TourProps } from '../../types/tour';
 
 
 const Tour: React.FC<TourProps> = ({ isOpen, onClose }) => {
   const [run, setRun] = useState(false);
   const [stepIndex, setStepIndex] = useState(0);
-  const { user } = useSelector((state: RootState) => state.auth);
-  const dispatch = useDispatch();
+  
 
   // Check if user has completed the tour before
   useEffect(() => {
@@ -94,17 +92,16 @@ const steps: Step[] = [
  const handleJoyrideCallback = (data: CallBackProps) => {
   const { status, action, index, type } = data;
 
-  if ([STATUS.FINISHED, STATUS.SKIPPED].includes(status)) {
-    // Stop the tour completely
+   if (status === STATUS.FINISHED || status === STATUS.SKIPPED) {
     setRun(false);
     setStepIndex(0);
     localStorage.setItem('tour-completed', 'true');
-    onClose(); // close tour panel
+    onClose();
     return;
   }
 
   // Update stepIndex for Next / Back buttons
-  if (type === 'step:after' || type === 'target:notFound') {
+  if (type === 'step:after' ) {
     setStepIndex(index + (action === ACTIONS.PREV ? -1 : 1));
   }
 };
@@ -143,7 +140,7 @@ const steps: Step[] = [
   locale={{ back: 'Back', close: 'Close', last: 'Finish', next: 'Next', skip: 'Skip' }}
   scrollOffset={50} // optional, scrolls a bit higher so tooltip is visible
   disableScrolling={false}
-  scrollToSteps={true}
+  
 />
 
 
