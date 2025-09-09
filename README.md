@@ -1,69 +1,107 @@
-# React + TypeScript + Vite
+#  Amar Wallet Frontend  
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A **secure, role-based, and user-friendly Digital Wallet Frontend** built with **React.js, TypeScript, Redux Toolkit, and RTK Query**.  
+This project replicates the functionality of popular mobile wallet systems like **bKash** or **Nagad**, providing **Users, Agents, and Admins** with tailored dashboards to manage financial operations.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+##  Project Overview  
+The Digital Wallet frontend enables:  
 
-## Expanding the ESLint configuration
+- **Public Landing Section** with home, features, about, contact, FAQ, etc.  
+- **Authentication & Role-based Access** (User, Agent, Admin) with JWT and persisted sessions.  
+- **User Dashboard** to manage wallet balance, deposit, withdraw, send money, and view transactions.  
+- **Agent Dashboard** for handling cash-in, cash-out, and commission tracking.  
+- **Admin Dashboard** for managing users, agents, transactions, and system settings.  
+- **Modern UI/UX** with responsive design, skeleton loaders, charts, pagination, and guided tours.  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Technology Stack  
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+### Frontend  
+- **React.js** – component-based UI  
+- **TypeScript** – type safety for frontend code  
+- **Redux Toolkit + RTK Query** – state management & API calls  
+- **React Router DOM** – routing and navigation  
+- **Tailwind CSS** – responsive and modern styling  
+- **JWT** – secure authentication handling  
+- **react-joyride** – for guide tour  
+- **SweetAlert** – notifications  
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Backend (for API)  
+- **Node.js + Express.js** – REST API  
+- **TypeScript** – type safety for backend code  
+- **MongoDB + Mongoose** – database  
+- **JWT + bcrypt** – authentication & security  
+
+**Backend Documentation:** [Digital Wallet API Docs](https://github.com/mdmasharafilhossain/Digital-Wallet-System-API)
+
+
+## Features  
+
+✅ Public Landing Pages (Home, About, Features, Contact, FAQ)  
+✅ Role-based Authentication (User, Agent, Admin)  
+✅ Persisted Login & Logout Functionality  
+✅ Dashboard for **Users, Agents, and Admins** with tailored features  
+✅ Wallet Operations – deposit, withdraw, send money  
+✅ Transaction History with filters & pagination  
+✅ Admin & Agent Management features  
+✅ Profile Management (update info & password)  
+✅ Charts, Cards & Tables for insights  
+✅ Guided Tour (one-time & restart option)  
+✅ Responsive UI For All Devices
+
+---
+
+## Setup Instructions  
+
+### 1. Clone the repository  
+```bash
+git clone https://github.com/mdmasharafilhossain/Digital-Wallet-System.git
+cd Digital-Wallet-System
+```
+### 2. Install dependencies  
+```bash
+npm install
+```
+### 3. Create .env.local file  
+```bash
+# add this after create .env.local file
+VITE_API = http://localhost:5000/api/v1
+```
+### 4. Start the development server
+```bash
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Live URLs
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- **Frontend:** [Digital Wallet Live](#)  
+- **Backend:** [Aamr Wallet Backend Live](https://wallet-management-system-server.vercel.app)  
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Demo Credentials
+
+### Admin
+- **Number:** 01345678901  
+- **Password:** admin1234  
+
+### User
+- **Number:** 01641749267  
+- **Password:** 123456mM$  
+
+### Agent
+- **Email:** 01842749267  
+- **Password:** 123456mM$  
+
+##  Author
+
+**Mohammad Mashrafil Hossain Mahi**  
+MERN Stack Developer
+
+Email: mashrafilmahi007@gmail.com  
+
+
+
+
+
