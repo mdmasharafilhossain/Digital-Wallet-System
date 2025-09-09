@@ -16,6 +16,7 @@ import About from "../pages/About";
 import Features from "../pages/Features";
 import Contact from "../pages/Contact";
 import FAQ from "../pages/FAQ";
+import ErrorPage from "../components/layout/ErrorPage";
 
 
 
@@ -23,6 +24,7 @@ export const router = createBrowserRouter([
   {
     Component: App,
     path: "/",
+    errorElement: <ErrorPage/>,
     children : [
     {
       Component: Login,
