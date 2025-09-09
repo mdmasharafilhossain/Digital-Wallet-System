@@ -28,3 +28,5 @@ yarn.lock
 tsconfig.json
 package.json
 
+
+.vercel
