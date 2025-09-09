@@ -70,6 +70,7 @@ export const router = createBrowserRouter([
    {
     path: "/user",
     Component: withAuth(() => <DashboardLayout role={role.user} />, role.user),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/user/dashboard" /> },
       ...generateRoutes(userSidebarItems),
@@ -78,6 +79,7 @@ export const router = createBrowserRouter([
    {
     path: "/admin",
     Component: withAuth(() => <DashboardLayout role={role.admin} />, role.admin),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/admin/dashboard" /> },
       ...generateRoutes(adminSidebarItems),
@@ -86,6 +88,7 @@ export const router = createBrowserRouter([
    {
     path: "/agent",
     Component: withAuth(() => <DashboardLayout role={role.agent} />, role.agent),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/agent/dashboard" /> },
       ...generateRoutes(agentSidebarItems),
