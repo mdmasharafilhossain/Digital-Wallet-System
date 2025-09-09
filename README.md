@@ -77,7 +77,7 @@ npm run dev
 
 ## Live URLs
 
-- **Frontend:** [Digital Wallet Live](#)  
+- **Frontend:** [Digital Wallet Live](https://digital-wallet-client-beta.vercel.app)  
 - **Backend:** [Aamr Wallet Backend Live](https://wallet-management-system-server.vercel.app)  
 
 ## Demo Credentials
