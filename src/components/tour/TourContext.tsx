@@ -1,11 +1,8 @@
 /* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import type { TourContextType } from '../../types/tour';
 
-interface TourContextType {
-  isTourOpen: boolean;
-  openTour: () => void;
-  closeTour: () => void;
-}
+
 
 const TourContext = createContext<TourContextType | undefined>(undefined);
 

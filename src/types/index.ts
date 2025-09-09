@@ -93,3 +93,8 @@ export interface ActionButtonProps {
   icon: React.ReactNode;
   label: string;
 }
+export type ErrorPageProps = {
+  title?: string;
+  message?: string;
+  code?: string | number;
+};

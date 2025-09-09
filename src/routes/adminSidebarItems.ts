@@ -1,15 +1,16 @@
 
-import AdminDashboard from "../pages/Admin/AdminDashboard";
-import AgentManagement from "../pages/Admin/AgentManagement";
-import TransactionList_Admin from "../pages/Admin/TransactionList_Admin";
-import UserManagement from "../pages/Admin/UserManagement";
-import WalletManagement from "../pages/Admin/WalletManagement";
-import UserProfile from "../pages/User/UserProfile";
 
 
+
+import React from "react";
 import type { ISidebarItem } from "../types";
 
-
+const AdminDashboard = React.lazy(() => import("../pages/Admin/AdminDashboard"));
+const AgentManagement = React.lazy(() => import("../pages/Admin/AgentManagement"));
+const TransactionList_Admin = React.lazy(() => import("../pages/Admin/TransactionList_Admin"));
+const UserManagement = React.lazy(() => import("../pages/Admin/UserManagement"));
+const WalletManagement = React.lazy(() => import("../pages/Admin/WalletManagement"));
+const UserProfile = React.lazy(() => import("../pages/User/UserProfile"));
 
 export const adminSidebarItems: ISidebarItem[] = [
     

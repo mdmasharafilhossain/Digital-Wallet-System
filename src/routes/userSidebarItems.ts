@@ -1,35 +1,33 @@
-
-import Settings from "../pages/Settings";
-import UserDashboard from "../pages/User/UserDashboard";
-import UserProfile from "../pages/User/UserProfile";
+import  { lazy } from "react";
 import type { ISidebarItem } from "../types";
 
 
+const UserDashboard = lazy(() => import("../pages/User/UserDashboard"));
+const UserProfile = lazy(() => import("../pages/User/UserProfile"));
+const Settings = lazy(() => import("../pages/Settings"));
 
 export const userSidebarItems: ISidebarItem[] = [
-    
   {
-    
     items: [
       {
         title: "Dashboard",
         url: "/user/dashboard",
-        component: UserDashboard
+        component: UserDashboard,
       },
       {
         title: "Manage Profile",
         url: "profile",
-        component: UserProfile
+        component: UserProfile,
       },
       {
         title: "Settings",
         url: "settings",
-        component: Settings
+        component: Settings,
       },
       {
         title: "Go To Home",
         url: "../",
-        component: null
+        component: null,
       },
     ],
   },
