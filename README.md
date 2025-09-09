@@ -94,5 +94,14 @@ npm run dev
 - **Email:** 01842749267  
 - **Password:** 123456mM$  
 
+##  Author
+
+**Mohammad Mashrafil Hossain Mahi**  
+MERN Stack Developer
+
+Email: mashrafilmahi007@gmail.com  
+
+
+
 
 
