@@ -132,7 +132,8 @@ const [showPassword, setShowPassword] = useState(false);
 
             
             {/* Password Input */}
-            <div className="relative">
+            <div>
+              <div className="relative">
   <label htmlFor="password" className="sr-only">Password</label>
   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
     {/* Lock Icon */}
@@ -186,10 +187,12 @@ const [showPassword, setShowPassword] = useState(false);
     )}
   </button>
 
-  {errors.password && (
+  
+</div>
+{errors.password && (
     <p className="mt-2 text-sm text-red-500">{errors.password.message}</p>
   )}
-</div>
+            </div>
 
             <div>
               <button
