@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/rules-of-hooks */
+
 import { Outlet } from "react-router";
 import CommonLayout from "./components/layout/CommonLayout";
 import { useGetProfileQuery } from "./redux/features/auth/auth.api";
@@ -18,7 +18,7 @@ useEffect(() => {
     if (isAuthenticated) {
       const alreadyCompleted = localStorage.getItem("tour-completed");
       if (!alreadyCompleted) {
-        openTour(); // 🔥 auto-open tour for new users
+        openTour(); 
       }
     }
   }, [isAuthenticated, openTour]);

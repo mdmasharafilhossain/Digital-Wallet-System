@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import App from "../App";
 import Login from "../pages/login";
-import Register from "../pages/Register";
+
 
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { generateRoutes } from "../utils/generateRoutes";
@@ -10,19 +10,25 @@ import { withAuth } from "../utils/withAuth";
 import { role } from "../constants/role";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
-import Unauthorized from "../utils/Unauthorized";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Features from "../pages/Features";
-import Contact from "../pages/Contact";
-import FAQ from "../pages/FAQ";
+import { lazy } from "react";
 
+
+const Register = lazy(() => import("../pages/Register"));
+
+const Unauthorized = lazy(() => import("../utils/Unauthorized"));
+const Home = lazy(() => import("../pages/Home"));
+const About = lazy(() => import("../pages/About"));
+const Features = lazy(() => import("../pages/Features"));
+const Contact = lazy(() => import("../pages/Contact"));
+const FAQ = lazy(() => import("../pages/FAQ"));
+const ErrorPage = lazy(() => import("../components/layout/ErrorPage"));
 
 
 export const router = createBrowserRouter([
   {
     Component: App,
     path: "/",
+    errorElement: <ErrorPage/>,
     children : [
     {
       Component: Login,
@@ -68,6 +74,7 @@ export const router = createBrowserRouter([
    {
     path: "/user",
     Component: withAuth(() => <DashboardLayout role={role.user} />, role.user),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/user/dashboard" /> },
       ...generateRoutes(userSidebarItems),
@@ -76,6 +83,7 @@ export const router = createBrowserRouter([
    {
     path: "/admin",
     Component: withAuth(() => <DashboardLayout role={role.admin} />, role.admin),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/admin/dashboard" /> },
       ...generateRoutes(adminSidebarItems),
@@ -84,6 +92,7 @@ export const router = createBrowserRouter([
    {
     path: "/agent",
     Component: withAuth(() => <DashboardLayout role={role.agent} />, role.agent),
+    errorElement:<ErrorPage/>,
     children: [
       { index: true, element: <Navigate to="/agent/dashboard" /> },
       ...generateRoutes(agentSidebarItems),
