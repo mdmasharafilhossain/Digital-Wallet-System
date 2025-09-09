@@ -47,7 +47,7 @@ const [showPassword, setShowPassword] = useState(false);
       let errorMessage = 'Something went wrong!';
   
   if (error?.data?.message) {
-    console.log(error.message,"error");
+    // console.log(error.message,"error");
     errorMessage = error?.data?.message;
   } else if (error?.data?.message?.toLowerCase().includes('password')) {
     errorMessage = 'Password did not match!';

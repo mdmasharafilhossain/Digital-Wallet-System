@@ -29,7 +29,7 @@ const WalletManagement: React.FC = () => {
 
   const handleToggleBlock = async (id: string, isBlocked: boolean) => {
     const action = isBlocked ? "Unblock" : "Block";
-console.log(id, "User ID");
+
     const result = await MySwal.fire({
       title: `Are you sure you want to ${action} this User?`,
       icon: "warning",
