@@ -1,7 +1,7 @@
 import { createBrowserRouter, Navigate } from "react-router";
 import App from "../App";
 import Login from "../pages/login";
-import Register from "../pages/Register";
+
 
 import DashboardLayout from "../components/layout/DashboardLayout";
 import { generateRoutes } from "../utils/generateRoutes";
@@ -10,14 +10,18 @@ import { withAuth } from "../utils/withAuth";
 import { role } from "../constants/role";
 import { adminSidebarItems } from "./adminSidebarItems";
 import { agentSidebarItems } from "./agentSidebarItems";
-import Unauthorized from "../utils/Unauthorized";
-import Home from "../pages/Home";
-import About from "../pages/About";
-import Features from "../pages/Features";
-import Contact from "../pages/Contact";
-import FAQ from "../pages/FAQ";
-import ErrorPage from "../components/layout/ErrorPage";
+import { lazy } from "react";
 
+
+const Register = lazy(() => import("../pages/Register"));
+
+const Unauthorized = lazy(() => import("../utils/Unauthorized"));
+const Home = lazy(() => import("../pages/Home"));
+const About = lazy(() => import("../pages/About"));
+const Features = lazy(() => import("../pages/Features"));
+const Contact = lazy(() => import("../pages/Contact"));
+const FAQ = lazy(() => import("../pages/FAQ"));
+const ErrorPage = lazy(() => import("../components/layout/ErrorPage"));
 
 
 export const router = createBrowserRouter([
